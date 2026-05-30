@@ -172,18 +172,18 @@ function updateShareText(force = false) {
 }
 
 function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
-  const chars = [...text];
+  const words = String(text).split(/(\s+)/);
   let line = "";
-  chars.forEach((char, index) => {
-    const testLine = line + char;
-    if (ctx.measureText(testLine).width > maxWidth && line) {
+  words.forEach((word, index) => {
+    const testLine = line + word;
+    if (ctx.measureText(testLine.trim()).width > maxWidth && line.trim()) {
       ctx.fillText(line, x, y);
-      line = char;
+      line = word.trimStart();
       y += lineHeight;
     } else {
       line = testLine;
     }
-    if (index === chars.length - 1 && line) ctx.fillText(line, x, y);
+    if (index === words.length - 1 && line.trim()) ctx.fillText(line.trimEnd(), x, y);
   });
 }
 
@@ -195,37 +195,71 @@ function drawShareCard() {
   const name = $("#hideName").checked ? "someone" : state.profile.personName;
   const text = $("#shareText").value.trim() || "I did not text them today. I came back to myself instead.";
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const bg = ctx.createLinearGradient(0, 0, 900, 1200);
-  bg.addColorStop(0, "#f8f5ee");
-  bg.addColorStop(0.58, "#edf2ed");
-  bg.addColorStop(1, "#f6eee9");
+  const width = canvas.width;
+  const height = canvas.height;
+
+  ctx.clearRect(0, 0, width, height);
+  const bg = ctx.createLinearGradient(0, 0, width, height);
+  bg.addColorStop(0, "#fffaf1");
+  bg.addColorStop(0.42, "#f2f6ef");
+  bg.addColorStop(1, "#efe7df");
   ctx.fillStyle = bg;
-  ctx.fillRect(0, 0, 900, 1200);
+  ctx.fillRect(0, 0, width, height);
+
+  const glow = ctx.createRadialGradient(820, 160, 40, 820, 160, 440);
+  glow.addColorStop(0, "rgba(183, 125, 99, 0.22)");
+  glow.addColorStop(1, "rgba(183, 125, 99, 0)");
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, width, height);
+
+  ctx.fillStyle = "rgba(255, 253, 250, 0.76)";
+  roundRect(ctx, 94, 94, 892, 1162, 34);
+  ctx.fill();
 
   ctx.strokeStyle = "rgba(63, 95, 80, 0.18)";
-  ctx.lineWidth = 2;
-  ctx.strokeRect(62, 62, 776, 1076);
-  ctx.strokeRect(94, 94, 712, 1012);
+  ctx.lineWidth = 3;
+  roundRect(ctx, 94, 94, 892, 1162, 34);
+  ctx.stroke();
+  ctx.strokeStyle = "rgba(183, 125, 99, 0.22)";
+  roundRect(ctx, 132, 132, 816, 1086, 24);
+  ctx.stroke();
 
   ctx.fillStyle = "#b77d63";
-  ctx.font = "700 30px system-ui, sans-serif";
-  ctx.fillText("NO CONTACT DAYS", 120, 170);
-
-  ctx.fillStyle = "#1f2723";
-  ctx.font = "800 64px system-ui, sans-serif";
-  wrapCanvasText(ctx, `Since the breakup with ${name}`, 120, 330, 660, 78);
-  ctx.font = "900 150px system-ui, sans-serif";
-  ctx.fillText(`Day ${apartDays}`, 112, 520);
+  ctx.font = "800 32px system-ui, sans-serif";
+  ctx.fillText("NO CONTACT DAYS", 174, 214);
 
   ctx.fillStyle = "#3f5f50";
-  ctx.font = "700 46px system-ui, sans-serif";
-  wrapCanvasText(ctx, text, 120, 690, 660, 68);
+  ctx.beginPath();
+  ctx.arc(858, 202, 46, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#fffdfa";
+  ctx.font = "900 44px system-ui, sans-serif";
+  ctx.fillText("N", 844, 218);
+
+  ctx.fillStyle = "#1f2723";
+  ctx.font = "850 70px system-ui, sans-serif";
+  wrapCanvasText(ctx, `Since the breakup with ${name}`, 174, 392, 720, 82);
+  ctx.font = "950 176px system-ui, sans-serif";
+  ctx.fillText(`Day ${apartDays}`, 166, 632);
+
+  ctx.fillStyle = "#3f5f50";
+  ctx.font = "800 48px system-ui, sans-serif";
+  wrapCanvasText(ctx, text, 174, 812, 720, 66);
 
   ctx.fillStyle = "#6b746f";
-  ctx.font = "500 28px system-ui, sans-serif";
-  ctx.fillText("Private breakup recovery tracker", 120, 1012);
-  ctx.fillText(new Intl.DateTimeFormat("en-US").format(new Date()), 120, 1060);
+  ctx.font = "650 28px system-ui, sans-serif";
+  ctx.fillText("Private breakup recovery tracker", 174, 1126);
+  ctx.fillText(new Intl.DateTimeFormat("en-US").format(new Date()), 174, 1174);
+}
+
+function roundRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.arcTo(x + width, y, x + width, y + height, radius);
+  ctx.arcTo(x + width, y + height, x, y + height, radius);
+  ctx.arcTo(x, y + height, x, y, radius);
+  ctx.arcTo(x, y, x + width, y, radius);
+  ctx.closePath();
 }
 
 $("#setupForm").addEventListener("submit", (event) => {

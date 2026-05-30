@@ -225,18 +225,26 @@
               <p class="eyebrow">Milestone Card</p>
               <h2>Create a shareable no contact card</h2>
             </div>
-            <div class="share-tools">
-              <label>
-                <span>Card message</span>
-                <textarea id="shareText" maxlength="110"></textarea>
-              </label>
-              <label class="checkbox-row">
-                <input id="hideName" type="checkbox" checked />
-                <span>Hide their name</span>
-              </label>
-              <button class="primary-btn" id="downloadCard" type="button">Download PNG Card</button>
+            <div class="share-card-builder">
+              <div class="share-tools">
+                <label>
+                  <span>Card message</span>
+                  <textarea id="shareText" maxlength="110"></textarea>
+                </label>
+                <label class="checkbox-row">
+                  <input id="hideName" type="checkbox" checked />
+                  <span>Hide their name</span>
+                </label>
+                <button class="primary-btn" id="downloadCard" type="button">Download PNG Card</button>
+              </div>
+              <div class="share-preview" aria-label="Milestone card preview">
+                <div class="share-preview-top">
+                  <span>Preview</span>
+                  <span>1080 x 1350</span>
+                </div>
+                <canvas id="shareCanvas" width="1080" height="1350"></canvas>
+              </div>
             </div>
-            <canvas id="shareCanvas" width="900" height="1200" aria-label="Milestone card preview"></canvas>
           </article>
         </section>
       </section>
