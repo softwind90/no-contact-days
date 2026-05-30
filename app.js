@@ -29,6 +29,22 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function normalizeDateInput(value) {
+  const trimmed = String(value || "").trim();
+  if (/^\d{8}$/.test(trimmed)) {
+    return `${trimmed.slice(0, 4)}-${trimmed.slice(4, 6)}-${trimmed.slice(6)}`;
+  }
+  return trimmed;
+}
+
+function isValidISODate(value) {
+  if (!value) return true;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+  return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+}
+
 function daysBetween(dateA, dateB = todayISO()) {
   if (!dateA) return 0;
   const start = new Date(`${dateA}T00:00:00`);
@@ -215,11 +231,31 @@ function drawShareCard() {
 $("#setupForm").addEventListener("submit", (event) => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
+  const setupError = $("#setupError");
+  const personName = form.get("personName").trim();
+  const startDate = normalizeDateInput(form.get("startDate"));
+  const breakupDate = normalizeDateInput(form.get("breakupDate"));
+  const lastContactDate = normalizeDateInput(form.get("lastContactDate"));
+
+  setupError.textContent = "";
+  if (!personName) {
+    setupError.textContent = "Please enter a name or nickname.";
+    return;
+  }
+  if (!breakupDate) {
+    setupError.textContent = "Please enter your breakup date.";
+    return;
+  }
+  if (![startDate, breakupDate, lastContactDate].every(isValidISODate)) {
+    setupError.textContent = "Use a valid date like 2023-05-01 or 20230501.";
+    return;
+  }
+
   state.profile = {
-    personName: form.get("personName").trim(),
-    startDate: form.get("startDate"),
-    breakupDate: form.get("breakupDate"),
-    lastContactDate: form.get("lastContactDate"),
+    personName,
+    startDate,
+    breakupDate,
+    lastContactDate,
     vow: form.get("vow").trim()
   };
   saveState();

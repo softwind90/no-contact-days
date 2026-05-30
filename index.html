@@ -70,7 +70,7 @@
           </div>
         </div>
 
-        <form class="setup-form" id="setupForm" aria-label="Create your breakup recovery tracker">
+        <form class="setup-form" id="setupForm" aria-label="Create your breakup recovery tracker" novalidate>
           <label>
             <span>Their name or nickname</span>
             <input name="personName" type="text" maxlength="24" placeholder="e.g. A, my ex, someone" required />
@@ -78,21 +78,22 @@
           <div class="two-col">
             <label>
               <span>Relationship start date</span>
-              <input name="startDate" type="text" inputmode="numeric" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" />
+              <input name="startDate" type="text" inputmode="numeric" pattern="(\d{4}-\d{2}-\d{2}|\d{8})" placeholder="YYYY-MM-DD or YYYYMMDD" />
             </label>
             <label>
               <span>Breakup date</span>
-              <input name="breakupDate" type="text" inputmode="numeric" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required />
+              <input name="breakupDate" type="text" inputmode="numeric" pattern="(\d{4}-\d{2}-\d{2}|\d{8})" placeholder="YYYY-MM-DD or YYYYMMDD" required />
             </label>
           </div>
           <label>
             <span>Last contact date</span>
-            <input name="lastContactDate" type="text" inputmode="numeric" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" />
+            <input name="lastContactDate" type="text" inputmode="numeric" pattern="(\d{4}-\d{2}-\d{2}|\d{8})" placeholder="YYYY-MM-DD or YYYYMMDD" />
           </label>
           <label>
             <span>Recovery reminder</span>
             <textarea name="vow" maxlength="120" placeholder="I am choosing space, clarity, and myself today."></textarea>
           </label>
+          <p class="form-error" id="setupError" role="alert"></p>
           <button class="primary-btn" type="submit">Start My No Contact Tracker</button>
         </form>
       </section>
