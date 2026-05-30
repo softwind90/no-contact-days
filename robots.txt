@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nocontactdays.com/sitemap.xml
+Sitemap: https://no-contact-days.vercel.app/sitemap.xml
