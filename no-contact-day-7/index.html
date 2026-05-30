@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Contact Day 7 - Why the First Week Is Hard</title>
+    <meta name="description" content="No contact day 7 can feel unstable. Learn why the first week is hard and how to protect your no-contact streak." />
+    <link rel="canonical" href="https://nocontactdays.com/no-contact-day-7/" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why is no contact day 7 so hard?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Around day 7 the initial shock may fade and the silence can feel more real, which can make urges to reconnect stronger."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do on no contact day 7?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Protect the streak, avoid social media checking, write any message as an unsent letter, and treat the first week as a milestone."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand-row" href="../"><span class="brand-mark">N</span><span>No Contact Days</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../no-contact-tracker/">Tracker</a>
+        <a href="../breakup-days-calculator/">Calculator</a>
+        <a href="../want-to-text-your-ex/">Texting Urge</a>
+        <a href="../no-contact-day-7/">Day 7</a>
+        <a href="../no-contact-day-30/">Day 30</a>
+      </nav>
+    </header>
+
+    <main class="content-shell">
+      <div class="breadcrumbs"><a href="../">Home</a> / No contact day 7</div>
+      <section class="article-hero">
+        <p class="eyebrow">No contact day 7</p>
+        <h1>The first week is a real milestone.</h1>
+        <p>Day 7 often feels harder than expected because the shock is fading and the habit of reaching out is still alive.</p>
+      </section>
+
+      <section class="content-grid">
+        <article class="article-body">
+          <h2>Why day 7 can feel hard</h2>
+          <p>The first few days can run on adrenaline. Around one week in, the silence becomes more real. You may want reassurance, closure, or one more conversation.</p>
+          <h2>What to do today</h2>
+          <ul>
+            <li>Do not check their social media for one full day.</li>
+            <li>Write the message in an unsent letter instead.</li>
+            <li>Save day 7 as a milestone, not a test you have to pass perfectly.</li>
+          </ul>
+          <h2>What day 7 means</h2>
+          <p>It means you have already made it through multiple waves. That is evidence you can make it through the next one.</p>
+          <div class="page-cta">
+            <a class="primary-btn" href="../#top" data-event="day7_page_tracker">Create a milestone card</a>
+            <a class="secondary-btn" href="../want-to-text-your-ex/">Use the SOS pause</a>
+          </div>
+        </article>
+
+        <aside class="mini-tool" aria-label="Day 7 milestone prompt">
+          <p class="eyebrow">Milestone prompt</p>
+          <h2>Save one sentence</h2>
+          <label>
+            <span>What helped you reach day 7?</span>
+            <textarea id="day7Note" maxlength="220" placeholder="One thing that helped me was..."></textarea>
+          </label>
+          <button class="primary-btn" id="day7Button" type="button">Save Prompt</button>
+          <div class="mini-result" id="day7Result">Use this sentence on your milestone card.</div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <strong>No Contact Days</strong>
+          <p>No Contact Days is a self-help journaling and tracking tool. It is not therapy, medical advice, or crisis care. If you feel unsafe or in crisis, contact local emergency services or a licensed professional.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="../no-contact-tracker/">Tracker</a>
+          <a href="../want-to-text-your-ex/">SOS pause</a>
+          <a href="../no-contact-milestone-card/">Milestone card</a>
+          <a href="../no-contact-day-30/">Day 30</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="../analytics.js"></script>
+    <script>
+      document.querySelector("#day7Button").addEventListener("click", () => {
+        document.querySelector("#day7Result").textContent = "Saved for your day 7 reflection.";
+        window.trackEvent?.("mini_day7_prompt_saved");
+      });
+    </script>
+  </body>
+</html>

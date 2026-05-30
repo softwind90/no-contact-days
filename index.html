@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Contact Days - Free Breakup Recovery Tracker</title>
+    <meta
+      name="description"
+      content="Track your no-contact streak, days since breakup, mood check-ins, unsent letters, memories, and shareable milestone cards. Private and free in your browser."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="No Contact Days - Free Breakup Recovery Tracker" />
+    <meta
+      property="og:description"
+      content="A private breakup recovery tracker for no-contact days, mood check-ins, unsent letters, and milestone cards."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://nocontactdays.com/" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "No Contact Days",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any",
+        "description": "A private breakup recovery tracker for no-contact streaks, days since breakup, mood check-ins, unsent letters, and milestone cards.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand-row" href="#top" aria-label="No Contact Days home">
+        <span class="brand-mark">N</span>
+        <span>No Contact Days</span>
+      </a>
+      <nav class="site-nav" aria-label="SEO sections">
+        <a href="./no-contact-tracker/">Tracker</a>
+        <a href="#sos">SOS</a>
+        <a href="./breakup-days-calculator/">Calculator</a>
+        <a href="./want-to-text-your-ex/">Texting Urge</a>
+        <a href="./no-contact-day-7/">Day 7</a>
+      </nav>
+    </header>
+
+    <main class="app-shell" id="top">
+      <section class="intro-panel" id="setupPanel">
+        <div class="intro-copy">
+          <p class="eyebrow">Free breakup recovery tracker</p>
+          <h1>Track your no-contact streak and heal one day at a time.</h1>
+          <p>
+            A private no contact tracker for breakup days, mood check-ins, unsent letters, memory vaults, and
+            shareable milestone cards. Free no contact tracker. No app download. No signup.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#top" data-event="home_start_tracker_cta">Start Free Tracker</a>
+            <a class="secondary-btn" href="./want-to-text-your-ex/" data-event="home_sos_cta">I Want to Text My Ex</a>
+          </div>
+          <div class="keyword-row" aria-label="Popular tools">
+            <span>No contact tracker</span>
+            <span>Breakup days calculator</span>
+            <span>Unsent letter to ex</span>
+            <span>No app download</span>
+            <span>No signup</span>
+          </div>
+        </div>
+
+        <form class="setup-form" id="setupForm" aria-label="Create your breakup recovery tracker">
+          <label>
+            <span>Their name or nickname</span>
+            <input name="personName" type="text" maxlength="24" placeholder="e.g. A, my ex, someone" required />
+          </label>
+          <div class="two-col">
+            <label>
+              <span>Relationship start date</span>
+              <input name="startDate" type="text" inputmode="numeric" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" />
+            </label>
+            <label>
+              <span>Breakup date</span>
+              <input name="breakupDate" type="text" inputmode="numeric" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required />
+            </label>
+          </div>
+          <label>
+            <span>Last contact date</span>
+            <input name="lastContactDate" type="text" inputmode="numeric" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" />
+          </label>
+          <label>
+            <span>Recovery reminder</span>
+            <textarea name="vow" maxlength="120" placeholder="I am choosing space, clarity, and myself today."></textarea>
+          </label>
+          <button class="primary-btn" type="submit">Start My No Contact Tracker</button>
+        </form>
+      </section>
+
+      <section class="dashboard hidden" id="dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Private tracker</p>
+            <h1>Day <span id="daysApart"></span> since the breakup with <span id="displayName"></span></h1>
+          </div>
+          <button class="ghost-btn" id="resetBtn" type="button">Start over</button>
+        </header>
+
+        <section class="hero-grid" id="tracker">
+          <article class="day-card">
+            <div class="ambient-lines" aria-hidden="true"></div>
+            <p class="small-label">Today is</p>
+            <strong>Day <span id="heroDaysApart"></span></strong>
+            <p id="heroMessage">You do not have to feel healed today. You only have to stay close to yourself.</p>
+          </article>
+          <div class="stats-grid">
+            <article>
+              <span>No contact</span>
+              <strong><span id="noContactDays"></span> days</strong>
+            </article>
+            <article>
+              <span>Together for</span>
+              <strong><span id="togetherDays"></span></strong>
+            </article>
+            <article>
+              <span>Check-ins</span>
+              <strong><span id="checkinCount"></span></strong>
+            </article>
+            <article>
+              <span>Saved memories</span>
+              <strong><span id="vaultCount"></span></strong>
+            </article>
+          </div>
+        </section>
+
+        <nav class="tabs" aria-label="Tracker tools">
+          <button class="tab active" data-tab="today" type="button">Daily Check-in</button>
+          <button class="tab" data-tab="letters" type="button">Unsent Letter</button>
+          <button class="tab" data-tab="vault" type="button">Memory Vault</button>
+          <button class="tab" data-tab="timeline" type="button">Recovery Timeline</button>
+          <button class="tab" data-tab="share" type="button">Milestone Card</button>
+        </nav>
+
+        <section class="workspace">
+          <article class="panel tab-panel" id="todayPanel">
+            <div class="panel-heading">
+              <p class="eyebrow">Daily Check-in</p>
+              <h2>How are you today?</h2>
+            </div>
+            <form id="checkinForm" class="stack-form">
+              <label>
+                <span>How much do you miss them? <b id="missValue">5</b>/10</span>
+                <input name="missLevel" id="missLevel" type="range" min="0" max="10" value="5" />
+              </label>
+              <label class="checkbox-row">
+                <input name="urge" type="checkbox" />
+                <span>I felt the urge to contact them today</span>
+              </label>
+              <label>
+                <span>One thought you are not sending</span>
+                <textarea name="note" maxlength="140" placeholder="Write it here instead of sending it."></textarea>
+              </label>
+              <button class="primary-btn" type="submit">Save Today</button>
+            </form>
+            <div class="soft-result" id="todayResult"></div>
+          </article>
+
+          <article class="panel tab-panel hidden" id="lettersPanel">
+            <div class="panel-heading">
+              <p class="eyebrow">Unsent Letter</p>
+              <h2>A safe place for the message you should not send</h2>
+            </div>
+            <form id="letterForm" class="stack-form">
+              <textarea name="letter" maxlength="320" placeholder="I passed that place today and thought of you."></textarea>
+              <div class="button-row">
+                <button class="primary-btn" type="submit" data-mode="seal">Seal It</button>
+                <button class="secondary-btn" type="submit" data-mode="later">Open in 30 Days</button>
+              </div>
+            </form>
+            <div class="list" id="lettersList"></div>
+          </article>
+
+          <article class="panel tab-panel hidden" id="vaultPanel">
+            <div class="panel-heading">
+              <p class="eyebrow">Memory Vault</p>
+              <h2>Keep the memory without reopening it every day</h2>
+            </div>
+            <form id="vaultForm" class="stack-form">
+              <div class="two-col">
+                <label>
+                  <span>Type</span>
+                  <select name="type">
+                    <option>A sentence</option>
+                    <option>A song</option>
+                    <option>A place</option>
+                    <option>A promise</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Title</span>
+                  <input name="title" maxlength="40" placeholder="e.g. The coffee shop" required />
+                </label>
+              </div>
+              <label>
+                <span>What are you sealing away?</span>
+                <textarea name="content" maxlength="220" placeholder="You do not have to delete it. You do not have to open it every day."></textarea>
+              </label>
+              <button class="primary-btn" type="submit">Add to Memory Vault</button>
+            </form>
+            <div class="list" id="vaultList"></div>
+          </article>
+
+          <article class="panel tab-panel hidden" id="timelinePanel">
+            <div class="panel-heading">
+              <p class="eyebrow">Recovery Timeline</p>
+              <h2>Your no contact milestones</h2>
+            </div>
+            <div class="timeline" id="timelineList"></div>
+          </article>
+
+          <article class="panel tab-panel hidden" id="sharePanel">
+            <div class="panel-heading">
+              <p class="eyebrow">Milestone Card</p>
+              <h2>Create a shareable no contact card</h2>
+            </div>
+            <div class="share-tools">
+              <label>
+                <span>Card message</span>
+                <textarea id="shareText" maxlength="110"></textarea>
+              </label>
+              <label class="checkbox-row">
+                <input id="hideName" type="checkbox" checked />
+                <span>Hide their name</span>
+              </label>
+              <button class="primary-btn" id="downloadCard" type="button">Download PNG Card</button>
+            </div>
+            <canvas id="shareCanvas" width="900" height="1200" aria-label="Milestone card preview"></canvas>
+          </article>
+        </section>
+      </section>
+
+      <section class="sos-panel" id="sos" aria-label="Immediate no contact help">
+        <div>
+          <p class="eyebrow">I need help now</p>
+          <h2>Before you text your ex, put the urge here for 60 seconds.</h2>
+          <p>
+            This is the quick pause between the impulse and the message. Name what triggered you, write the text here
+            instead, and come back to your no-contact streak before deciding anything.
+          </p>
+        </div>
+        <div class="sos-actions" aria-label="Common urgent breakup moments">
+          <a href="./want-to-text-your-ex/" data-event="sos_unsent_letter">Write an unsent letter</a>
+          <a href="./no-contact-tracker/" data-event="sos_check_streak">Check my no-contact streak</a>
+          <a href="./want-to-text-your-ex/" data-event="sos_want_to_text">I want to text my ex</a>
+        </div>
+      </section>
+
+      <section class="seo-grid" id="calculator" aria-label="Breakup recovery tools">
+        <article>
+          <p class="eyebrow">Breakup days calculator</p>
+          <h2>How many days has it been since your breakup?</h2>
+          <p>
+            Enter your breakup date once and the tracker calculates your breakup day count automatically. It also
+            tracks relationship length and no-contact days, so you can see progress without doing the math yourself.
+          </p>
+        </article>
+        <article>
+          <p class="eyebrow">No contact rule</p>
+          <h2>Turn no contact into a visible streak</h2>
+          <p>
+            A visible streak can make the next hard hour easier. Use daily check-ins, milestone cards, and unsent
+            letters to protect the boundary when the urge to text your ex gets loud.
+          </p>
+        </article>
+        <article id="letters">
+          <p class="eyebrow">Unsent letter to ex</p>
+          <h2>Write the message without sending it</h2>
+          <p>
+            The unsent letter tool gives the feeling somewhere to go. Seal the letter privately or schedule it for 30
+            days later, when the moment has passed and you can read it with more distance.
+          </p>
+        </article>
+      </section>
+
+      <aside class="ad-slot" aria-label="Advertisement placeholder">
+        <span>Advertisement</span>
+        <strong>Future ad placement</strong>
+      </aside>
+
+      <section class="intent-grid" aria-label="Popular no contact guides">
+        <article id="want-to-text">
+          <p class="eyebrow">Want to text your ex?</p>
+          <h2>Pause before sending the message</h2>
+          <p>
+            The urge usually peaks, crests, and fades. Write the message in the unsent letter tool, wait, then decide
+            from a calmer place.
+          </p>
+          <a href="./want-to-text-your-ex/">Use the unsent letter tool</a>
+        </article>
+        <article id="day-7">
+          <p class="eyebrow">No contact day 7</p>
+          <h2>The first week is a real milestone</h2>
+          <p>
+            Day 7 can feel unstable because the shock is wearing off. Track the win, keep the boundary, and make the
+            progress visible.
+          </p>
+          <a href="./no-contact-day-7/">Read the day 7 guide</a>
+        </article>
+        <article id="day-30">
+          <p class="eyebrow">No contact day 30</p>
+          <h2>Start looking for patterns</h2>
+          <p>
+            By day 30, your check-ins can show what still triggers you and what has softened. Use the timeline as proof
+            that healing is happening.
+          </p>
+          <a href="./no-contact-day-30/">Read the day 30 guide</a>
+        </article>
+      </section>
+
+      <section class="guide-panel" id="guide">
+        <p class="eyebrow">Breakup recovery guide</p>
+        <h2>No contact timeline: what the first milestones mean</h2>
+        <div class="guide-list">
+          <article>
+            <strong>Day 1</strong>
+            <p>The shock is still loud. Start the counter and write one sentence instead of reopening the conversation.</p>
+          </article>
+          <article>
+            <strong>Day 7</strong>
+            <p>The first week is often the hardest. A milestone card can make the progress feel real.</p>
+          </article>
+          <article>
+            <strong>Day 30</strong>
+            <p>Patterns become easier to see. Look back at your check-ins and notice what triggers have softened.</p>
+          </article>
+          <article>
+            <strong>Day 100</strong>
+            <p>The story may still matter, but it no longer has to run the day. Keep what helped and leave the rest.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="related-guides" aria-label="Related breakup recovery guides">
+        <div class="panel-heading">
+          <p class="eyebrow">Related guides</p>
+          <h2>Build these into dedicated SEO pages next</h2>
+        </div>
+        <div class="related-list">
+          <a href="./want-to-text-your-ex/">What to do when you want to text your ex</a>
+          <a href="./no-contact-day-7/">No contact day 7: why the first week is hard</a>
+          <a href="./no-contact-day-30/">No contact day 30: what changes after a month</a>
+          <a href="./no-contact-rule/">No contact rule after a breakup</a>
+          <a href="./broke-no-contact/">Broke no contact? What to do next</a>
+          <a href="./stop-checking-ex-social-media/">How to stop checking your ex's social media</a>
+          <a href="./how-long-does-heartbreak-last/">How long does heartbreak last?</a>
+          <a href="./unsent-letter-to-ex-examples/">Unsent letter to ex examples</a>
+          <a href="./no-contact-milestone-card/">No contact milestone card generator</a>
+          <a href="./breakup-days-calculator/">Days since breakup calculator</a>
+          <a href="./no-contact-tracker/">Free no contact tracker with no app download</a>
+          <a href="./content-roadmap.html">20-page SEO content roadmap</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <strong>No Contact Days</strong>
+          <p>
+            No Contact Days is a self-help journaling and tracking tool. It is not therapy, medical advice, or crisis
+            care. If you feel unsafe or in crisis, contact local emergency services or a licensed professional.
+          </p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="./no-contact-tracker/">Tracker</a>
+          <a href="./want-to-text-your-ex/">SOS pause</a>
+          <a href="./no-contact-milestone-card/">Milestone card</a>
+          <a href="./no-contact-rule/">No contact rule</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="./analytics.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

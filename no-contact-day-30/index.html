@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Contact Day 30 - What Changes After a Month</title>
+    <meta name="description" content="No contact day 30 is a milestone for pattern recognition. Learn what may change after one month and what to track next." />
+    <link rel="canonical" href="https://nocontactdays.com/no-contact-day-30/" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What happens after 30 days of no contact?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "After 30 days, some urges may soften and emotional patterns can become easier to see, though healing is different for everyone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I text my ex after 30 days of no contact?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Day 30 is a milestone, not an automatic reason to restart contact. Review your triggers and goals before deciding anything."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand-row" href="../"><span class="brand-mark">N</span><span>No Contact Days</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../no-contact-tracker/">Tracker</a>
+        <a href="../breakup-days-calculator/">Calculator</a>
+        <a href="../want-to-text-your-ex/">Texting Urge</a>
+        <a href="../no-contact-day-7/">Day 7</a>
+        <a href="../no-contact-day-30/">Day 30</a>
+      </nav>
+    </header>
+
+    <main class="content-shell">
+      <div class="breadcrumbs"><a href="../">Home</a> / No contact day 30</div>
+      <section class="article-hero">
+        <p class="eyebrow">No contact day 30</p>
+        <h1>After a month, start looking for patterns.</h1>
+        <p>Day 30 does not mean everything is fixed. It means you have enough distance to notice what still pulls you back and what has started to soften.</p>
+      </section>
+
+      <section class="content-grid">
+        <article class="article-body">
+          <h2>What may change by day 30</h2>
+          <p>The urge to text may still appear, but it may not last as long. Certain triggers become clearer: weekends, late nights, mutual friends, songs, places, or social media.</p>
+          <h2>What to review</h2>
+          <ul>
+            <li>Which days had the strongest urges?</li>
+            <li>Which triggers repeated?</li>
+            <li>What helped you not reopen contact?</li>
+            <li>What do you want the next 30 days to protect?</li>
+          </ul>
+          <h2>Do not use day 30 as an excuse to text</h2>
+          <p>A milestone is proof that distance helps. It is not automatically a sign that you are ready to restart contact.</p>
+          <div class="page-cta">
+            <a class="primary-btn" href="../#top" data-event="day30_page_tracker">Start full tracker</a>
+            <a class="secondary-btn" href="../no-contact-tracker/">Check your streak</a>
+          </div>
+        </article>
+
+        <aside class="mini-tool" aria-label="Day 30 pattern review">
+          <p class="eyebrow">Pattern review</p>
+          <h2>Your strongest trigger</h2>
+          <label>
+            <span>What still pulls you back?</span>
+            <textarea id="day30Trigger" maxlength="220" placeholder="Late nights, social media, loneliness..."></textarea>
+          </label>
+          <button class="primary-btn" id="day30Button" type="button">Save Pattern</button>
+          <div class="mini-result" id="day30Result">Name the pattern so it is easier to protect against.</div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <strong>No Contact Days</strong>
+          <p>No Contact Days is a self-help journaling and tracking tool. It is not therapy, medical advice, or crisis care. If you feel unsafe or in crisis, contact local emergency services or a licensed professional.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="../no-contact-tracker/">Tracker</a>
+          <a href="../want-to-text-your-ex/">SOS pause</a>
+          <a href="../no-contact-milestone-card/">Milestone card</a>
+          <a href="../how-long-does-heartbreak-last/">Heartbreak timeline</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="../analytics.js"></script>
+    <script>
+      document.querySelector("#day30Button").addEventListener("click", () => {
+        document.querySelector("#day30Result").textContent = "Pattern noted. Protect your next 30 days around this trigger.";
+        window.trackEvent?.("mini_day30_pattern_saved");
+      });
+    </script>
+  </body>
+</html>

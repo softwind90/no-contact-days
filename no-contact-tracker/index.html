@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free No Contact Tracker - No App Download or Signup</title>
+    <meta name="description" content="Use a free no contact tracker in your browser. Track your streak, days since breakup, urges, and milestones with no app download and no signup." />
+    <link rel="canonical" href="https://nocontactdays.com/no-contact-tracker/" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a no contact tracker?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A no contact tracker counts the time since your last interaction with an ex and helps you keep the boundary visible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this no contact tracker free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. No Contact Days is free to use in your browser and does not require an app download or signup."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand-row" href="../"><span class="brand-mark">N</span><span>No Contact Days</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../no-contact-tracker/">Tracker</a>
+        <a href="../breakup-days-calculator/">Calculator</a>
+        <a href="../want-to-text-your-ex/">Texting Urge</a>
+        <a href="../no-contact-day-7/">Day 7</a>
+        <a href="../no-contact-day-30/">Day 30</a>
+      </nav>
+    </header>
+
+    <main class="content-shell">
+      <div class="breadcrumbs"><a href="../">Home</a> / No contact tracker</div>
+      <section class="article-hero">
+        <p class="eyebrow">Free no contact tracker</p>
+        <h1>Track your no-contact streak without downloading an app.</h1>
+        <p>No signup, no account, no paywall. Start with your last contact date and keep your progress visible when the urge to text gets loud.</p>
+      </section>
+
+      <section class="content-grid">
+        <article class="article-body">
+          <h2>Why tracking helps</h2>
+          <p>A breakup can make time feel blurry. A no contact tracker turns the boundary into something visible: one day, seven days, thirty days, and then longer stretches where you can finally see that the wave passes.</p>
+          <h2>How to use it</h2>
+          <p>Enter your breakup date and last contact date on the homepage. The tracker calculates your breakup day count, no-contact streak, relationship length, check-ins, and recovery milestones locally in your browser.</p>
+          <h2>What to track</h2>
+          <ul>
+            <li>Your no-contact streak</li>
+            <li>The days since breakup</li>
+            <li>Urges to text your ex</li>
+            <li>Daily missing level</li>
+            <li>Milestone cards for day 7, day 30, and day 100</li>
+          </ul>
+          <div class="page-cta">
+            <a class="primary-btn" href="../#top" data-event="tracker_page_start">Start the tracker</a>
+            <a class="secondary-btn" href="../want-to-text-your-ex/">I want to text my ex</a>
+          </div>
+        </article>
+
+        <aside class="mini-tool" aria-label="No contact quick calculator">
+          <p class="eyebrow">Quick streak check</p>
+          <h2>How many days no contact?</h2>
+          <label>
+            <span>Last contact date</span>
+            <input id="lastContactDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD" />
+          </label>
+          <button class="primary-btn" id="streakButton" type="button">Calculate Streak</button>
+          <div class="mini-result" id="streakResult">Enter a date to calculate your streak.</div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <strong>No Contact Days</strong>
+          <p>No Contact Days is a self-help journaling and tracking tool. It is not therapy, medical advice, or crisis care. If you feel unsafe or in crisis, contact local emergency services or a licensed professional.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="../want-to-text-your-ex/">SOS pause</a>
+          <a href="../no-contact-rule/">No contact rule</a>
+          <a href="../no-contact-milestone-card/">Milestone card</a>
+          <a href="../broke-no-contact/">Broke no contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="../analytics.js"></script>
+    <script>
+      document.querySelector("#streakButton").addEventListener("click", () => {
+        const value = document.querySelector("#lastContactDate").value;
+        const start = new Date(`${value}T00:00:00`);
+        const days = Math.max(0, Math.floor((new Date() - start) / 86400000));
+        document.querySelector("#streakResult").textContent = Number.isFinite(days) ? `You are ${days} days no contact.` : "Use YYYY-MM-DD.";
+        window.trackEvent?.("mini_no_contact_calculated");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakup Days Calculator - Days Since Breakup</title>
+    <meta name="description" content="Calculate how many days it has been since your breakup. Free browser-based breakup days calculator with no signup." />
+    <link rel="canonical" href="https://nocontactdays.com/breakup-days-calculator/" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I calculate days since breakup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter the breakup date and count the days between that date and today. This page calculates the number automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is counting breakup days healthy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Counting days can help when it is used as a recovery milestone rather than a way to stay attached to the relationship."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand-row" href="../"><span class="brand-mark">N</span><span>No Contact Days</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../no-contact-tracker/">Tracker</a>
+        <a href="../breakup-days-calculator/">Calculator</a>
+        <a href="../want-to-text-your-ex/">Texting Urge</a>
+        <a href="../no-contact-day-7/">Day 7</a>
+        <a href="../no-contact-day-30/">Day 30</a>
+      </nav>
+    </header>
+
+    <main class="content-shell">
+      <div class="breadcrumbs"><a href="../">Home</a> / Breakup days calculator</div>
+      <section class="article-hero">
+        <p class="eyebrow">Breakup days calculator</p>
+        <h1>How many days has it been since your breakup?</h1>
+        <p>Use this free calculator to count the days since the breakup and turn the number into a recovery milestone.</p>
+      </section>
+
+      <section class="content-grid">
+        <article class="article-body">
+          <h2>Why this number matters</h2>
+          <p>The number is not a score. It is a marker. It helps you notice that time is moving, even when your emotions feel stuck.</p>
+          <h2>What to do with your result</h2>
+          <p>If the number is small, focus on getting through the next hour without reopening the wound. If you are near day 7 or day 30, treat that as a milestone worth protecting.</p>
+          <h2>Next steps</h2>
+          <ul>
+            <li>Start a no-contact streak</li>
+            <li>Write an unsent letter instead of texting</li>
+            <li>Save a milestone card when you reach day 7 or day 30</li>
+          </ul>
+          <div class="page-cta">
+            <a class="primary-btn" href="../#top" data-event="calculator_page_start">Start full tracker</a>
+            <a class="secondary-btn" href="../no-contact-day-30/">Read about day 30</a>
+          </div>
+        </article>
+
+        <aside class="mini-tool" aria-label="Breakup days calculator">
+          <p class="eyebrow">Calculator</p>
+          <h2>Days since breakup</h2>
+          <label>
+            <span>Breakup date</span>
+            <input id="breakupDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD" />
+          </label>
+          <button class="primary-btn" id="breakupButton" type="button">Calculate Days</button>
+          <div class="mini-result" id="breakupResult">Enter your breakup date.</div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <strong>No Contact Days</strong>
+          <p>No Contact Days is a self-help journaling and tracking tool. It is not therapy, medical advice, or crisis care. If you feel unsafe or in crisis, contact local emergency services or a licensed professional.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="../no-contact-tracker/">Tracker</a>
+          <a href="../want-to-text-your-ex/">SOS pause</a>
+          <a href="../no-contact-milestone-card/">Milestone card</a>
+          <a href="../how-long-does-heartbreak-last/">Heartbreak timeline</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="../analytics.js"></script>
+    <script>
+      document.querySelector("#breakupButton").addEventListener("click", () => {
+        const value = document.querySelector("#breakupDate").value;
+        const start = new Date(`${value}T00:00:00`);
+        const days = Math.max(0, Math.floor((new Date() - start) / 86400000));
+        document.querySelector("#breakupResult").textContent = Number.isFinite(days) ? `It has been ${days} days since your breakup.` : "Use YYYY-MM-DD.";
+        window.trackEvent?.("mini_breakup_days_calculated");
+      });
+    </script>
+  </body>
+</html>
