@@ -11,7 +11,7 @@
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
+      "mainEntity": [
           {
             "@type": "Question",
             "name": "What is a no contact tracker?",
@@ -27,6 +27,30 @@
               "@type": "Answer",
               "text": "Yes. No Contact Days is free to use in your browser and does not require an app download or signup."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I track no contact days?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter your last contact date, then use the tracker to count your streak, save check-ins, and record urges without texting your ex."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I restart after texting my ex?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If you sent a message or replied emotionally, many people restart the count from that contact date and use the next choice as a clean reset."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use a no contact tracker without an app?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. This tracker works in your browser, stores data locally, and does not require a download or account."
+            }
           }
         ]
       }
@@ -36,8 +60,9 @@
     <header class="site-header">
       <a class="brand-row" href="../"><span class="brand-mark">N</span><span>No Contact Days</span></a>
       <nav class="site-nav" aria-label="Main navigation">
+        <a href="../tools/">Tools</a>
         <a href="../no-contact-tracker/">Tracker</a>
-        <a href="../breakup-days-calculator/">Calculator</a>
+        <a href="../no-contact-calculator/">Calculator</a>
         <a href="../want-to-text-your-ex/">Texting Urge</a>
         <a href="../no-contact-day-7/">Day 7</a>
         <a href="../no-contact-day-30/">Day 30</a>
@@ -58,6 +83,7 @@
           <p>A breakup can make time feel blurry. A no contact tracker turns the boundary into something visible: one day, seven days, thirty days, and then longer stretches where you can finally see that the wave passes.</p>
           <h2>How to use it</h2>
           <p>Enter your breakup date and last contact date on the homepage. The tracker calculates your breakup day count, no-contact streak, relationship length, check-ins, and recovery milestones locally in your browser.</p>
+          <p>If you only want a fast count, use the <a class="text-link" href="../no-contact-calculator/">no contact calculator</a>. If you want a fuller record, start the tracker and save daily check-ins when the urge to text shows up.</p>
           <h2>What to track</h2>
           <ul>
             <li>Your no-contact streak</li>
@@ -66,9 +92,32 @@
             <li>Daily missing level</li>
             <li>Milestone cards for day 7, day 30, and day 100</li>
           </ul>
+          <h2>What makes this different from a notes app?</h2>
+          <p>A notes app can hold your thoughts, but a no contact tracker gives the breakup a simple recovery structure: streak, check-in, urge, unsent letter, memory vault, timeline, and milestone card. The point is not to obsess over the number. The point is to give yourself a visible pause before you reopen the conversation.</p>
+          <h2>When to restart your no contact streak</h2>
+          <p>Many people restart the streak after a direct message, phone call, emotional reply, or in-person conversation that reopens the breakup loop. If you checked social media, you may not restart the official count, but it is still worth logging as a trigger. For a quick reset plan, read <a class="text-link" href="../broke-no-contact/">what to do when you broke no contact</a>.</p>
+          <h2>Frequently asked questions</h2>
+          <div class="faq-list">
+            <details>
+              <summary>What is a no contact tracker?</summary>
+              <p>A no contact tracker counts the time since your last contact and gives you a place to record urges, check-ins, letters, and milestones.</p>
+            </details>
+            <details>
+              <summary>How do I track no contact days?</summary>
+              <p>Enter your last contact date, then check the streak whenever you feel tempted to text. You can also use the <a class="text-link" href="../no-contact-calculator/">no contact calculator</a> for a quick count.</p>
+            </details>
+            <details>
+              <summary>Should I restart after texting my ex?</summary>
+              <p>If the message reopened the emotional loop, restart from that contact date. Do not send follow-up messages just because the streak changed.</p>
+            </details>
+            <details>
+              <summary>Can I use it without downloading an app?</summary>
+              <p>Yes. The tracker runs in your browser and does not require signup.</p>
+            </details>
+          </div>
           <div class="page-cta">
             <a class="primary-btn" href="../#top" data-event="tracker_page_start">Start the tracker</a>
-            <a class="secondary-btn" href="../want-to-text-your-ex/">I want to text my ex</a>
+            <a class="secondary-btn" href="../tools/">See all tools</a>
           </div>
         </article>
 
@@ -77,7 +126,7 @@
           <h2>How many days no contact?</h2>
           <label>
             <span>Last contact date</span>
-            <input id="lastContactDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD" />
+            <input id="lastContactDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD or YYYYMMDD" />
           </label>
           <button class="primary-btn" id="streakButton" type="button">Calculate Streak</button>
           <div class="mini-result" id="streakResult">Enter a date to calculate your streak.</div>
@@ -102,11 +151,30 @@
 
     <script src="../analytics.js"></script>
     <script>
+      function normalizeDateInput(value) {
+        const trimmed = String(value || "").trim();
+        if (/^\d{8}$/.test(trimmed)) {
+          return `${trimmed.slice(0, 4)}-${trimmed.slice(4, 6)}-${trimmed.slice(6)}`;
+        }
+        return trimmed;
+      }
+
+      function isValidISODate(value) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+        const [year, month, day] = value.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
+        return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+      }
+
       document.querySelector("#streakButton").addEventListener("click", () => {
-        const value = document.querySelector("#lastContactDate").value;
+        const value = normalizeDateInput(document.querySelector("#lastContactDate").value);
+        if (!isValidISODate(value)) {
+          document.querySelector("#streakResult").textContent = "Use a valid date like 2023-05-01 or 20230501.";
+          return;
+        }
         const start = new Date(`${value}T00:00:00`);
         const days = Math.max(0, Math.floor((new Date() - start) / 86400000));
-        document.querySelector("#streakResult").textContent = Number.isFinite(days) ? `You are ${days} days no contact.` : "Use YYYY-MM-DD.";
+        document.querySelector("#streakResult").textContent = `You are ${days} days no contact.`;
         window.trackEvent?.("mini_no_contact_calculated");
       });
     </script>
