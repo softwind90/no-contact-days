@@ -721,6 +721,35 @@ select:focus {
   line-height: 1.35;
 }
 
+.tool-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.tool-card {
+  display: grid;
+  gap: 8px;
+  min-height: 132px;
+  padding: 18px;
+  color: var(--ink);
+  background: rgba(247, 245, 240, 0.82);
+  border: 1px solid rgba(31, 39, 35, 0.08);
+  border-radius: 8px;
+}
+
+.tool-card span {
+  color: var(--sage-dark);
+  font-size: 1.05rem;
+  font-weight: 850;
+}
+
+.tool-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .content-shell {
   width: min(980px, calc(100% - 32px));
   margin: 0 auto;
@@ -945,6 +974,10 @@ select:focus {
 
   .related-list {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .tool-list {
+    grid-template-columns: 1fr;
   }
 
   .mini-tool {

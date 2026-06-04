@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://no-contact-days.vercel.app/</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-04</lastmod>
+  </url>
+  <url>
+    <loc>https://no-contact-days.vercel.app/tools/</loc>
+    <lastmod>2026-06-04</lastmod>
   </url>
   <url>
     <loc>https://no-contact-days.vercel.app/no-contact-tracker/</loc>
@@ -10,7 +14,7 @@
   </url>
   <url>
     <loc>https://no-contact-days.vercel.app/no-contact-calculator/</loc>
-    <lastmod>2026-06-03</lastmod>
+    <lastmod>2026-06-04</lastmod>
   </url>
   <url>
     <loc>https://no-contact-days.vercel.app/breakup-days-calculator/</loc>
