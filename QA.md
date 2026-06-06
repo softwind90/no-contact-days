@@ -48,6 +48,6 @@ Check:
 ## Post-Deploy Checks
 
 - Vercel deployment status is `Ready`.
-- `https://no-contact-days.vercel.app/sitemap-index.xml` opens as XML.
-- `https://no-contact-days.vercel.app/sitemap.xml` opens as XML.
+- `https://www.thenocontacttracker.com/sitemap-index.xml` opens as XML.
+- `https://www.thenocontacttracker.com/sitemap.xml` opens as XML.
 - Submit `sitemap-index.xml` in Google Search Console after deployment.

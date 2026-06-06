@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://no-contact-days.vercel.app/sitemap-index.xml
-Sitemap: https://no-contact-days.vercel.app/sitemap.xml
+Sitemap: https://www.thenocontacttracker.com/sitemap-index.xml
+Sitemap: https://www.thenocontacttracker.com/sitemap.xml
