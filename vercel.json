@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "no-contact-days.vercel.app"
+        }
+      ],
+      "destination": "https://www.thenocontacttracker.com/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/sitemap-index.xml",
