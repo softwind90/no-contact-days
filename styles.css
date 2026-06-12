@@ -217,6 +217,23 @@ p {
   line-height: 1.6;
 }
 
+.featured-tool-card {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(63, 95, 80, 0.94), rgba(48, 73, 62, 0.92));
+  border-color: rgba(63, 95, 80, 0.38);
+}
+
+.featured-tool-card span,
+.featured-tool-card strong,
+.featured-tool-card p {
+  color: #fffdfa;
+}
+
+.featured-tool-card p {
+  max-width: 680px;
+  color: rgba(255, 253, 250, 0.82);
+}
+
 .setup-form,
 .panel,
 .stats-grid article {
@@ -1026,6 +1043,10 @@ select:focus {
   .share-card-builder,
   .conversion-grid {
     grid-template-columns: 1fr;
+  }
+
+  .featured-tool-card {
+    grid-column: auto;
   }
 
   .share-tools {
