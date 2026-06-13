@@ -111,6 +111,20 @@ a {
   grid-template-columns: minmax(0, 1fr) 420px;
   gap: 48px;
   align-items: center;
+  position: relative;
+  padding: 24px 0 44px;
+}
+
+.intro-panel::before {
+  content: "";
+  position: absolute;
+  inset: 18px -28px 18px;
+  z-index: -1;
+  background:
+    linear-gradient(135deg, rgba(255, 254, 250, 0.84), rgba(235, 241, 234, 0.56)),
+    radial-gradient(circle at 88% 18%, rgba(184, 121, 98, 0.18), transparent 28%);
+  border: 1px solid rgba(49, 89, 70, 0.08);
+  border-radius: 10px;
 }
 
 .brand-row {
@@ -181,11 +195,45 @@ p {
   letter-spacing: 0;
 }
 
-.intro-copy p:last-child {
+.intro-copy > p:not(.eyebrow) {
   max-width: 540px;
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.8;
+}
+
+.hero-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 640px;
+  margin: 24px 0 4px;
+}
+
+.hero-proof div {
+  min-height: 104px;
+  padding: 16px;
+  background: rgba(255, 254, 250, 0.78);
+  border: 1px solid rgba(49, 89, 70, 0.12);
+  border-top: 4px solid var(--clay);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(36, 51, 43, 0.08);
+}
+
+.hero-proof strong,
+.hero-proof span {
+  display: block;
+}
+
+.hero-proof strong {
+  margin-bottom: 8px;
+  color: var(--sage-ink);
+  font-size: 1.05rem;
+}
+
+.hero-proof span {
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .keyword-row {
@@ -219,14 +267,29 @@ p {
   font-weight: 750;
 }
 
+.section-heading {
+  display: grid;
+  gap: 4px;
+  max-width: 720px;
+  margin: 4px 0 18px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 3.25rem);
+  line-height: 1.05;
+}
+
 .conversion-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
-  margin: -22px 0 28px;
+  margin: 0 0 28px;
 }
 
 .conversion-card {
+  position: relative;
+  overflow: hidden;
   display: grid;
   gap: 10px;
   min-height: 170px;
@@ -239,6 +302,16 @@ p {
     transform 160ms ease,
     border-color 160ms ease,
     box-shadow 160ms ease;
+}
+
+.conversion-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 18px auto;
+  width: 34px;
+  height: 34px;
+  border-right: 2px solid rgba(49, 89, 70, 0.18);
+  border-bottom: 2px solid rgba(49, 89, 70, 0.18);
 }
 
 .conversion-card:hover {
@@ -268,11 +341,30 @@ p {
 
 .featured-tool-card {
   grid-column: span 2;
+  min-height: 210px;
+  padding: 28px;
   background:
     linear-gradient(135deg, rgba(23, 59, 46, 0.98), rgba(49, 89, 70, 0.94)),
     var(--sage-dark);
   border-color: rgba(23, 59, 46, 0.32);
   box-shadow: 0 22px 54px rgba(23, 59, 46, 0.18);
+}
+
+.featured-tool-card::before {
+  content: "Main tool";
+  justify-self: start;
+  padding: 7px 10px;
+  color: var(--sage-ink);
+  background: rgba(255, 253, 250, 0.92);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.featured-tool-card::after {
+  border-color: rgba(255, 253, 250, 0.32);
 }
 
 .featured-tool-card span,
@@ -298,8 +390,40 @@ p {
 .setup-form {
   display: grid;
   gap: 18px;
-  padding: 26px;
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
   border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 254, 250, 0.96), rgba(241, 246, 239, 0.92)),
+    var(--panel);
+  border-top: 5px solid var(--sage-dark);
+  box-shadow: 0 30px 80px rgba(36, 51, 43, 0.16);
+}
+
+.setup-form::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 96px;
+  background: linear-gradient(90deg, rgba(49, 89, 70, 0.08), rgba(184, 121, 98, 0.08));
+  pointer-events: none;
+}
+
+.form-card-header {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.form-card-header h2 {
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+  line-height: 1.12;
+}
+
+.form-card-header span {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 label {
@@ -323,8 +447,8 @@ select {
 
 input,
 select {
-  height: 44px;
-  padding: 0 12px;
+  height: 50px;
+  padding: 0 14px;
 }
 
 textarea {
@@ -363,7 +487,7 @@ select:focus {
 .secondary-btn,
 .ghost-btn,
 .tab {
-  min-height: 44px;
+  min-height: 48px;
   border: 0;
   border-radius: 6px;
   padding: 0 16px;
@@ -375,7 +499,7 @@ select:focus {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent),
     var(--sage-dark);
-  box-shadow: 0 10px 24px rgba(49, 89, 70, 0.18);
+  box-shadow: 0 14px 30px rgba(49, 89, 70, 0.22);
 }
 
 .secondary-btn {
@@ -1142,6 +1266,19 @@ select:focus {
     grid-template-columns: 1fr;
   }
 
+  .intro-panel {
+    gap: 24px;
+    padding-bottom: 28px;
+  }
+
+  .intro-panel::before {
+    inset: 8px -12px 12px;
+  }
+
+  .hero-proof {
+    grid-template-columns: 1fr;
+  }
+
   .featured-tool-card {
     grid-column: auto;
   }
@@ -1156,7 +1293,7 @@ select:focus {
 
   .setup-form,
   .panel {
-    padding: 18px;
+    padding: 22px;
   }
 
   .topbar {
@@ -1209,6 +1346,20 @@ select:focus {
 
   .site-nav {
     justify-content: flex-start;
+  }
+
+  .hero-actions .primary-btn,
+  .hero-actions .secondary-btn {
+    width: 100%;
+  }
+
+  .section-heading {
+    margin-top: 8px;
+  }
+
+  .featured-tool-card {
+    min-height: 190px;
+    padding: 22px;
   }
 
   .guide-list {
