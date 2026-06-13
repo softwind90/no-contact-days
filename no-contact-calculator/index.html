@@ -68,16 +68,35 @@
       </nav>
     </header>
 
-    <main class="content-shell">
+    <main class="content-shell calculator-shell">
       <div class="breadcrumbs"><a href="../">Home</a> / No contact calculator</div>
-      <section class="article-hero">
-        <p class="eyebrow">Main no contact tool</p>
-        <h1>No contact calculator and counter for your streak.</h1>
-        <p>Enter the date of your last text, call, reply, or in-person contact. The calculator gives you the exact number of no-contact days so you can check the streak before you make a decision.</p>
-        <div class="page-cta">
-          <a class="primary-btn" href="#calculator">Calculate your no contact days</a>
-          <a class="secondary-btn" href="../no-contact-tracker/">Start the full tracker</a>
+      <section class="calculator-stage" aria-label="No contact calculator">
+        <div class="article-hero">
+          <p class="eyebrow">Main no contact tool</p>
+          <h1>No contact calculator and counter.</h1>
+          <p>Enter the date of your last text, call, reply, or in-person contact. Use the number as a calm checkpoint before you decide whether to reopen the conversation.</p>
+          <div class="page-cta">
+            <a class="primary-btn" href="#calculator">Calculate your no contact days</a>
+            <a class="secondary-btn" href="../no-contact-tracker/">Start the full tracker</a>
+          </div>
+          <div class="trust-strip" aria-label="Calculator benefits">
+            <span>Exact streak</span>
+            <span>No signup</span>
+            <span>Works on mobile</span>
+          </div>
         </div>
+
+        <aside class="mini-tool calculator-tool" id="calculator" aria-label="No contact calculator">
+          <p class="eyebrow">Check before you text</p>
+          <h2>No contact counter</h2>
+          <p>One date. One number. One calmer decision.</p>
+          <label>
+            <span>Last contact date</span>
+            <input id="lastContactDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD or YYYYMMDD" />
+          </label>
+          <button class="primary-btn" id="noContactButton" type="button">Calculate Days</button>
+          <div class="mini-result" id="noContactResult">Enter your last contact date.</div>
+        </aside>
       </section>
 
       <section class="content-grid">
@@ -137,17 +156,6 @@
           </div>
         </article>
 
-        <aside class="mini-tool" id="calculator" aria-label="No contact calculator">
-          <p class="eyebrow">Main tool</p>
-          <h2>No contact counter</h2>
-          <p>Check your streak before you open the chat.</p>
-          <label>
-            <span>Last contact date</span>
-            <input id="lastContactDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD or YYYYMMDD" />
-          </label>
-          <button class="primary-btn" id="noContactButton" type="button">Calculate Days</button>
-          <div class="mini-result" id="noContactResult">Enter your last contact date.</div>
-        </aside>
       </section>
     </main>
 
