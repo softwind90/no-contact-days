@@ -10,6 +10,26 @@
       ],
       "destination": "https://www.thenocontacttracker.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/no-contact-rule/:path*",
+      "destination": "/no-contact-rule-after-breakup/",
+      "permanent": true
+    },
+    {
+      "source": "/i-want-to-text-my-ex/:path*",
+      "destination": "/want-to-text-your-ex/",
+      "permanent": true
+    },
+    {
+      "source": "/texts-to-send-your-ex/:path*",
+      "destination": "/what-to-text-an-ex/",
+      "permanent": true
+    },
+    {
+      "source": "/how-long-should-no-contact-last/:path*",
+      "destination": "/how-long-should-i-do-no-contact/",
+      "permanent": true
     }
   ],
   "headers": [

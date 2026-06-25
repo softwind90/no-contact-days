@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No Contact Calculator: Count Your No Contact Days</title>
-    <meta name="description" content="Free no contact calculator and counter. Enter your last contact date, count your streak, and decide what to do before texting your ex." />
+    <title>Free No Contact Calculator: Count Days Since Last Contact</title>
+    <meta name="description" content="Use this free no contact calculator to count days since your last text, call, or reply. See your next milestone, save the date locally, and protect your streak." />
     <link rel="canonical" href="https://www.thenocontacttracker.com/no-contact-calculator/" />
     <link rel="stylesheet" href="../styles.css" />
     <script type="application/ld+json">
@@ -71,6 +71,22 @@
         ]
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Free No Contact Calculator",
+        "url": "https://www.thenocontacttracker.com/no-contact-calculator/",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any",
+        "description": "A private browser-based calculator that counts days since last contact and shows the next no contact milestone.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -89,16 +105,22 @@
       <section class="calculator-stage" aria-label="No contact calculator">
         <div class="article-hero">
           <p class="eyebrow">Main no contact tool</p>
-          <h1>No contact calculator: count your streak before you text.</h1>
-          <p>Enter the date of your last text, call, reply, or in-person contact. Use the number as your main no-contact checkpoint before you decide whether to reopen the conversation.</p>
+          <h1>Free no contact calculator: count the days since your last contact.</h1>
+          <p>Enter the date of your last text, call, reply, or in-person contact. Get your exact streak, next milestone, and one calm next step before you reopen the conversation.</p>
           <div class="page-cta">
             <a class="primary-btn" href="#calculator">Calculate your no contact days</a>
             <a class="secondary-btn" href="../no-contact-tracker/">Start the full tracker</a>
           </div>
           <div class="trust-strip" aria-label="Calculator benefits">
             <span>Exact streak</span>
+            <span>Next milestone</span>
+            <span>Saved on this device</span>
             <span>No signup</span>
-            <span>Works on mobile</span>
+          </div>
+          <div class="article-meta">
+            <span>Updated June 23, 2026</span>
+            <span>Private browser tool</span>
+            <a href="../editorial-policy/">How this page is maintained</a>
           </div>
         </div>
 
@@ -110,8 +132,19 @@
             <span>Last contact date</span>
             <input id="lastContactDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD or YYYYMMDD" />
           </label>
-          <button class="primary-btn" id="noContactButton" type="button">Calculate Days</button>
-          <div class="mini-result" id="noContactResult">Enter your last contact date.</div>
+          <button class="primary-btn" id="noContactButton" type="button">Calculate My Streak</button>
+          <div class="mini-result" id="noContactPrompt">Enter your last contact date. Your date stays in this browser.</div>
+          <div class="calculator-result hidden" id="noContactResult" aria-live="polite">
+            <span>Your current streak</span>
+            <strong><span id="noContactDays">0</span> days</strong>
+            <p id="milestoneSummary"></p>
+            <div class="progress-track" aria-label="Progress to next milestone"><span id="milestoneProgress"></span></div>
+            <p id="calculatorNextStep"></p>
+          </div>
+          <div class="calculator-actions">
+            <button class="secondary-btn" id="saveContactDate" type="button">Save Date</button>
+            <button class="secondary-btn" id="clearContactDate" type="button">Clear</button>
+          </div>
         </aside>
       </section>
 
@@ -131,6 +164,25 @@
             </article>
           </div>
 
+          <h2>What the calculator gives you</h2>
+          <div class="steps-grid">
+            <article class="step-card">
+              <span>1</span>
+              <strong>Your exact day count</strong>
+              <p>The number of full calendar days since your last direct contact.</p>
+            </article>
+            <article class="step-card">
+              <span>2</span>
+              <strong>Your next milestone</strong>
+              <p>See how far you are from day 7, 14, 30, 60, 90, or 100.</p>
+            </article>
+            <article class="step-card">
+              <span>3</span>
+              <strong>A calmer next step</strong>
+              <p>Use the result to pause, track the urge, or restart without spiraling.</p>
+            </article>
+          </div>
+
           <h2>How to use the counter</h2>
           <ol>
             <li>Enter the last day you directly contacted or replied to your ex.</li>
@@ -143,6 +195,9 @@
           <p>If you searched for a no contact counter, start by entering the last date you texted, called, replied, or had direct contact. The result tells you how many full days have passed since then.</p>
           <h2>What counts as last contact?</h2>
           <p>Use the date of your last direct contact: a text, call, voice note, reply, in-person conversation, or any message that reopened the breakup conversation. If you only looked at their profile, you may not restart the official count, but it is still worth tracking as a trigger.</p>
+
+          <h2>How the day count is calculated</h2>
+          <p>The calculator compares your last-contact calendar date with today's local calendar date. It counts full calendar days rather than hours, so daylight-saving changes do not add or remove a day. Saving is optional and uses local browser storage; the date is not submitted to this website.</p>
 
           <h2>What to do with your result</h2>
           <ul>
@@ -162,7 +217,7 @@
           <h2>If you broke no contact</h2>
           <p>One message does not mean the whole process is ruined. Name the trigger, avoid sending follow-up messages out of shame, and restart from the next clean choice. If you need a reset, read <a class="text-link" href="../broke-no-contact/">what to do when you broke no contact</a>.</p>
           <h2>Related no contact tools</h2>
-          <p>For a fuller picture, pair this calculator with the <a class="text-link" href="../no-contact-tracker/">no contact tracker</a>, the <a class="text-link" href="../breakup-days-calculator/">breakup days calculator</a>, the <a class="text-link" href="../why-do-i-want-to-text-my-ex/">why do I want to text my ex</a> guide, and the <a class="text-link" href="../tools/">breakup recovery tools</a> page.</p>
+          <p>For a fuller picture, pair this calculator with the <a class="text-link" href="../no-contact-tracker/">no contact tracker</a>, the <a class="text-link" href="../breakup-days-calculator/">breakup days calculator</a>, the <a class="text-link" href="../why-do-want-to-text-your-ex/">why do I want to text my ex</a> guide, and the <a class="text-link" href="../tools/">breakup recovery tools</a> page.</p>
 
           <h2>Frequently asked questions</h2>
           <div class="faq-list">
@@ -194,7 +249,7 @@
 
           <div class="page-cta">
             <a class="primary-btn" href="../no-contact-tracker/">Start the full tracker</a>
-            <a class="secondary-btn" href="../how-long-should-no-contact-last/">How long should no contact last?</a>
+          <a class="secondary-btn" href="../how-long-should-i-do-no-contact/">How long should no contact last?</a>
           </div>
         </article>
 
@@ -210,8 +265,11 @@
         <nav class="footer-links" aria-label="Footer links">
           <a href="../no-contact-tracker/">Tracker</a>
           <a href="../want-to-text-your-ex/">SOS pause</a>
-          <a href="../no-contact-rule/">No contact rule</a>
+          <a href="../no-contact-rule-after-breakup/">No contact rule</a>
           <a href="../broke-no-contact/">Broke no contact</a>
+          <a href="../about/">About</a>
+          <a href="../editorial-policy/">Editorial policy</a>
+          <a href="../privacy/">Privacy</a>
         </nav>
       </div>
     </footer>
@@ -233,19 +291,95 @@
         return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
       }
 
-      document.querySelector("#noContactButton").addEventListener("click", () => {
-        const value = normalizeDateInput(document.querySelector("#lastContactDate").value);
+      const calculatorStorageKey = "no-contact-calculator-date";
+      const milestones = [1, 3, 7, 14, 30, 45, 60, 90, 100, 180, 365];
+
+      function calculateCalendarDays(value) {
+        const [year, month, day] = value.split("-").map(Number);
+        const today = new Date();
+        const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+        const startUtc = Date.UTC(year, month - 1, day);
+        return Math.floor((todayUtc - startUtc) / 86400000);
+      }
+
+      function renderCalculation(track = true) {
+        const input = document.querySelector("#lastContactDate");
+        const value = normalizeDateInput(input.value);
+        const prompt = document.querySelector("#noContactPrompt");
         const result = document.querySelector("#noContactResult");
         if (!isValidISODate(value)) {
-          result.textContent = "Use a valid date like 2023-05-01 or 20230501.";
+          prompt.textContent = "Use a valid date like 2023-05-01 or 20230501.";
+          result.classList.add("hidden");
           return;
         }
-        const start = new Date(`${value}T00:00:00`);
-        const today = new Date();
-        const days = Math.max(0, Math.floor((today - start) / 86400000));
-        result.textContent = `You are on day ${days} of no contact.`;
-        window.trackEvent?.("mini_no_contact_days_calculated");
+        const days = calculateCalendarDays(value);
+        if (days < 0) {
+          prompt.textContent = "The last contact date cannot be in the future.";
+          result.classList.add("hidden");
+          return;
+        }
+
+        input.value = value;
+        prompt.classList.add("hidden");
+        result.classList.remove("hidden");
+        document.querySelector("#noContactDays").textContent = days;
+
+        const nextMilestone = milestones.find((milestone) => milestone > days);
+        const previousMilestone = [...milestones].reverse().find((milestone) => milestone <= days) || 0;
+        const milestoneSummary = document.querySelector("#milestoneSummary");
+        const nextStep = document.querySelector("#calculatorNextStep");
+        const progress = document.querySelector("#milestoneProgress");
+
+        if (nextMilestone) {
+          const remaining = nextMilestone - days;
+          const range = nextMilestone - previousMilestone;
+          const completed = days - previousMilestone;
+          milestoneSummary.textContent = `Next milestone: day ${nextMilestone}, ${remaining} ${remaining === 1 ? "day" : "days"} away.`;
+          progress.style.width = `${Math.min(100, Math.max(0, (completed / range) * 100))}%`;
+        } else {
+          milestoneSummary.textContent = "You have passed a full year of no contact.";
+          progress.style.width = "100%";
+        }
+
+        if (days < 7) {
+          nextStep.textContent = "Next step: protect the next 24 hours. Do not solve the whole breakup today.";
+        } else if (days < 30) {
+          nextStep.textContent = "Next step: notice which triggers still make you want to reach out.";
+        } else {
+          nextStep.textContent = "Next step: review your clarity before treating the milestone as permission to text.";
+        }
+
+        if (track) window.trackEvent?.("no_contact_days_calculated", { days });
+      }
+
+      document.querySelector("#noContactButton").addEventListener("click", () => renderCalculation());
+      document.querySelector("#lastContactDate").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") renderCalculation();
       });
+      document.querySelector("#saveContactDate").addEventListener("click", () => {
+        const value = normalizeDateInput(document.querySelector("#lastContactDate").value);
+        if (!isValidISODate(value) || calculateCalendarDays(value) < 0) {
+          renderCalculation(false);
+          return;
+        }
+        localStorage.setItem(calculatorStorageKey, value);
+        document.querySelector("#noContactPrompt").classList.remove("hidden");
+        document.querySelector("#noContactPrompt").textContent = "Saved on this device. It will be here when you return.";
+        window.trackEvent?.("no_contact_date_saved");
+      });
+      document.querySelector("#clearContactDate").addEventListener("click", () => {
+        localStorage.removeItem(calculatorStorageKey);
+        document.querySelector("#lastContactDate").value = "";
+        document.querySelector("#noContactResult").classList.add("hidden");
+        document.querySelector("#noContactPrompt").classList.remove("hidden");
+        document.querySelector("#noContactPrompt").textContent = "Enter your last contact date. Your date stays in this browser.";
+      });
+
+      const savedDate = localStorage.getItem(calculatorStorageKey);
+      if (savedDate) {
+        document.querySelector("#lastContactDate").value = savedDate;
+        renderCalculation(false);
+      }
     </script>
   </body>
 </html>
