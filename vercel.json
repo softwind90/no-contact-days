@@ -17,8 +17,18 @@
       "permanent": true
     },
     {
+      "source": "/no-contact-after-breakup/:path*",
+      "destination": "/no-contact-rule-after-breakup/",
+      "permanent": true
+    },
+    {
       "source": "/i-want-to-text-my-ex/:path*",
       "destination": "/want-to-text-your-ex/",
+      "permanent": true
+    },
+    {
+      "source": "/why-do-want-to-text-your-ex/:path*",
+      "destination": "/why-do-i-want-to-text-my-ex/",
       "permanent": true
     },
     {
