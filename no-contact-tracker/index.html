@@ -118,7 +118,9 @@
         <div class="page-cta">
           <a class="primary-btn" href="../#top" data-event="tracker_page_start_top">Start the free tracker</a>
           <a class="secondary-btn" href="../no-contact-calculator/">Calculate days first</a>
+          <button class="secondary-btn" type="button" data-share-tool="tracker" data-share-url="https://www.thenocontacttracker.com/no-contact-tracker/" data-share-title="Free no contact tracker">Share free tracker</button>
         </div>
+        <div class="mini-result" data-share-status>Share this private, free tracker with someone who needs a pause before texting.</div>
         <div class="trust-strip" aria-label="Tracker benefits">
           <span>Streak tracker</span>
           <span>Local device storage</span>
@@ -260,6 +262,7 @@
     </footer>
 
     <script src="../analytics.js"></script>
+    <script src="../share-tool.js"></script>
     <script>
       function normalizeDateInput(value) {
         const trimmed = String(value || "").trim();
