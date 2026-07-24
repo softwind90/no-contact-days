@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Broke No Contact? What to Do Next</title>
-    <meta name="description" content="If you broke no contact, do not spiral. Learn how to reset your streak, understand the trigger, and get back to your boundary." />
+    <title>Broke No Contact? Reset Your Streak After Texting an Ex</title>
+    <meta name="description" content="Broke no contact after texting your ex? Stop the follow-up spiral, save a clean reset date, understand the trigger, and restart your streak." />
     <link rel="canonical" href="https://www.thenocontacttracker.com/broke-no-contact/" />
     <link rel="stylesheet" href="../styles.css" />
     <script type="application/ld+json">
@@ -27,6 +27,14 @@
               "@type": "Answer",
               "text": "Usually the cleanest reset is to stop the exchange and return to the boundary unless there is a practical reason to clarify something."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "When should I restart no contact after texting my ex?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the date of the message or emotional reply as your new reference point, then focus on the next clean choice rather than punishing yourself for the setback."
+            }
           }
         ]
       }
@@ -48,8 +56,12 @@
       <div class="breadcrumbs"><a href="../">Home</a> / Broke no contact</div>
       <section class="article-hero">
         <p class="eyebrow">Broke no contact</p>
-        <h1>You did not fail. You found a trigger.</h1>
-        <p>Breaking no contact feels heavy, but the next step is not shame. The next step is a cleaner reset.</p>
+        <h1>Broke no contact? Reset your streak without spiraling.</h1>
+        <p>One message does not erase your progress. Stop the follow-up cycle, name the trigger, and choose a clean restart point.</p>
+        <div class="page-cta">
+          <a class="primary-btn" href="#resetTool" data-event="broke_page_reset_cta">Set a reset date</a>
+          <a class="secondary-btn" href="../no-contact-tracker/" data-event="broke_page_tracker_top_cta">Restart the tracker</a>
+        </div>
       </section>
 
       <section class="content-grid">
@@ -64,21 +76,30 @@
           </ol>
           <h2>What you can learn</h2>
           <p>Most broken streaks have a pattern: loneliness, alcohol, birthdays, seeing a post, a dream, or wanting closure. Name it so you can protect against it next time.</p>
+          <h2>When should you restart no contact?</h2>
+          <p>Use the date of the text, call, reply, or emotional conversation as your new reference point. The number is not a punishment. It is a simple way to make the next boundary visible. If you are unsure whether the message needed a reply, use the <a class="text-link" href="../should-i-text-my-ex/">should I text my ex checklist</a> before contacting them again.</p>
+          <h2>What not to do next</h2>
+          <p>Do not send a second message to explain the first one, ask whether they saw it, or turn shame into a longer conversation. If you need to say more, put it in the <a class="text-link" href="../want-to-text-your-ex/">private texting pause</a> instead.</p>
           <div class="page-cta">
             <a class="primary-btn" href="../no-contact-tracker/" data-event="broke_page_tracker">Restart the tracker</a>
             <a class="secondary-btn" href="../want-to-text-your-ex/">Write instead of sending</a>
           </div>
         </article>
 
-        <aside class="mini-tool" aria-label="No contact reset note">
+        <aside class="mini-tool" id="resetTool" aria-label="No contact reset tool">
           <p class="eyebrow">Reset note</p>
-          <h2>Name the trigger</h2>
+          <h2>Save a clean restart</h2>
+          <label>
+            <span>Last contact date</span>
+            <input id="resetDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD or YYYYMMDD" />
+          </label>
           <label>
             <span>What triggered the message?</span>
             <textarea id="triggerNote" maxlength="220" placeholder="I texted because..."></textarea>
           </label>
-          <button class="primary-btn" id="triggerButton" type="button">Save Trigger</button>
-          <div class="mini-result" id="triggerResult">Name it, then restart clean.</div>
+          <button class="primary-btn" id="triggerButton" type="button">Save Reset Date</button>
+          <div class="mini-result" id="triggerResult">Save the date, then restart clean.</div>
+          <a class="secondary-btn hidden" id="openCalculator" href="../no-contact-calculator/" data-event="broke_page_open_calculator">Open my reset counter</a>
         </aside>
       </section>
     </main>
@@ -102,9 +123,29 @@
     </footer>
     <script src="../analytics.js"></script>
     <script>
+      function normalizeDateInput(value) {
+        const trimmed = String(value || "").trim();
+        return /^\d{8}$/.test(trimmed) ? `${trimmed.slice(0, 4)}-${trimmed.slice(4, 6)}-${trimmed.slice(6)}` : trimmed;
+      }
+
+      function isValidISODate(value) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+        const [year, month, day] = value.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
+        return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+      }
+
       document.querySelector("#triggerButton").addEventListener("click", () => {
-        document.querySelector("#triggerResult").textContent = "Trigger noted. Your next clean choice starts now.";
-        window.trackEvent?.("mini_broke_no_contact_trigger_saved");
+        const resetDate = normalizeDateInput(document.querySelector("#resetDate").value);
+        const result = document.querySelector("#triggerResult");
+        if (!isValidISODate(resetDate)) {
+          result.textContent = "Use a valid date like 2026-07-24 or 20260724.";
+          return;
+        }
+        localStorage.setItem("no-contact-calculator-date", resetDate);
+        result.textContent = "Reset date saved in this browser. Your next clean choice starts now.";
+        document.querySelector("#openCalculator").classList.remove("hidden");
+        window.trackEvent?.("broke_no_contact_reset_saved", { hasTrigger: Boolean(document.querySelector("#triggerNote").value.trim()) });
       });
     </script>
   </body>

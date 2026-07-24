@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No Contact Tracker: Track Your Streak After a Breakup</title>
-    <meta name="description" content="Use this no contact tracker to track your streak after a breakup, log urges, save check-ins, and protect milestones. Free browser tool, no signup." />
+    <title>No Contact Tracker: Count Days, Log Urges, and Keep Your Streak</title>
+    <meta name="description" content="Use this free no contact tracker to count days, log urges, save check-ins, and protect your streak after a breakup. Private browser tool, no signup." />
     <link rel="canonical" href="https://www.thenocontacttracker.com/no-contact-tracker/" />
     <link rel="stylesheet" href="../styles.css" />
     <script type="application/ld+json">
@@ -113,7 +113,7 @@
       <div class="breadcrumbs"><a href="../">Home</a> / No contact tracker</div>
       <section class="article-hero">
         <p class="eyebrow">No contact tracker</p>
-        <h1>No contact tracker: track your streak after a breakup.</h1>
+        <h1>No contact tracker: count days, log urges, and keep your streak.</h1>
         <p>Track your no contact days, urges, and milestones in one private browser tool. Count the days since your last contact, log the moment you want to text, and keep the next calm choice visible.</p>
         <div class="page-cta">
           <a class="primary-btn" href="../#top" data-event="tracker_page_start_top">Start the free tracker</a>
@@ -126,7 +126,7 @@
           <span>Milestone cards</span>
         </div>
         <div class="article-meta">
-          <span>Updated July 16, 2026</span>
+          <span>Updated July 24, 2026</span>
           <span>Self-help tracking tool</span>
           <a href="../editorial-policy/">Editorial standards</a>
         </div>
@@ -236,6 +236,7 @@
           </label>
           <button class="primary-btn" id="streakButton" type="button">Calculate Streak</button>
           <div class="mini-result" id="streakResult">Enter a date to calculate your streak.</div>
+          <a class="secondary-btn hidden" id="startWithDate" href="../#top" data-event="tracker_page_start_with_date">Use this date in the tracker</a>
         </aside>
       </section>
     </main>
@@ -284,6 +285,9 @@
         const start = new Date(`${value}T00:00:00`);
         const days = Math.max(0, Math.floor((new Date() - start) / 86400000));
         document.querySelector("#streakResult").textContent = `You are ${days} days no contact.`;
+        const startWithDate = document.querySelector("#startWithDate");
+        startWithDate.href = `../?lastContactDate=${encodeURIComponent(value)}#top`;
+        startWithDate.classList.remove("hidden");
         window.trackEvent?.("mini_no_contact_calculated");
       });
     </script>

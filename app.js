@@ -386,12 +386,30 @@ $("#downloadCard").addEventListener("click", () => {
   window.trackEvent?.("milestone_card_downloaded");
 });
 
+$("#copyToolLink").addEventListener("click", async () => {
+  const url = "https://www.thenocontacttracker.com/no-contact-tracker/";
+  const result = $("#copyToolLinkResult");
+  try {
+    await navigator.clipboard.writeText(url);
+    result.textContent = "Free tracker link copied.";
+    window.trackEvent?.("free_tracker_link_copied");
+  } catch {
+    result.textContent = "Copy this link: thenocontacttracker.com/no-contact-tracker/";
+  }
+});
+
 $("#resetBtn").addEventListener("click", () => {
   const confirmed = confirm("Start over? This will clear the tracker stored in this browser.");
   if (!confirmed) return;
   state = { ...defaultState };
   saveState();
-  render();
+render();
+
+const prefilledLastContactDate = normalizeDateInput(new URLSearchParams(location.search).get("lastContactDate") || "");
+if (!state.profile && isValidISODate(prefilledLastContactDate) && prefilledLastContactDate) {
+  $("#setupForm [name=lastContactDate]").value = prefilledLastContactDate;
+  window.trackEvent?.("tracker_setup_date_prefilled");
+}
 });
 
 render();
