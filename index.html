@@ -72,7 +72,15 @@
           </div>
           <label>
             <span>Last contact date</span>
-            <input name="lastContactDate" type="date" required />
+            <input
+              name="lastContactDate"
+              type="text"
+              inputmode="numeric"
+              pattern="(\d{4}-\d{2}-\d{2}|\d{8})"
+              placeholder="YYYY-MM-DD"
+              autocomplete="off"
+              required
+            />
           </label>
           <details class="optional-setup">
             <summary>Add optional details</summary>
@@ -84,11 +92,25 @@
               <div class="two-col">
                 <label>
                   <span>Relationship start date</span>
-                  <input name="startDate" type="date" />
+                  <input
+                    name="startDate"
+                    type="text"
+                    inputmode="numeric"
+                    pattern="(\d{4}-\d{2}-\d{2}|\d{8})"
+                    placeholder="YYYY-MM-DD"
+                    autocomplete="off"
+                  />
                 </label>
                 <label>
                   <span>Breakup date</span>
-                  <input name="breakupDate" type="date" />
+                  <input
+                    name="breakupDate"
+                    type="text"
+                    inputmode="numeric"
+                    pattern="(\d{4}-\d{2}-\d{2}|\d{8})"
+                    placeholder="YYYY-MM-DD"
+                    autocomplete="off"
+                  />
                 </label>
               </div>
               <label>
