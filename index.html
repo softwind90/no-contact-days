@@ -41,140 +41,96 @@
         <span>No Contact Days</span>
       </a>
       <nav class="site-nav" aria-label="SEO sections">
+        <a href="#tracker">My counter</a>
+        <a href="#sos">Need a pause?</a>
         <a href="./tools/">Tools</a>
-        <a href="./no-contact-tracker/">Tracker</a>
-        <a href="#sos">SOS</a>
-        <a href="./no-contact-calculator/">Calculator</a>
-        <a href="./want-to-text-your-ex/">Texting Urge</a>
-        <a href="./no-contact-day-7/">Day 7</a>
+        <a href="./no-contact-rule-after-breakup/">Guide</a>
       </nav>
     </header>
 
     <main class="app-shell" id="top">
       <section class="intro-panel" id="setupPanel">
         <div class="intro-copy">
-          <p class="eyebrow">Calm recovery tool</p>
-          <h1>Count the streak. Calm the urge. Stay no contact.</h1>
+          <p class="eyebrow">Free private no contact counter</p>
+          <h1>Start your no contact counter.</h1>
           <p>
-            A private breakup recovery workspace for the moment you want to text. Count your no-contact days, check
-            the streak before you act, and turn one hard hour into visible progress. Free. No signup.
+            See exactly how many days you have protected your boundary. Your counter and check-ins stay in this
+            browser. No account, download, or signup.
           </p>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#top" data-event="home_start_tracker_cta">Start Free Tracker</a>
-            <a class="secondary-btn" href="./no-contact-calculator/" data-event="home_calculator_cta">Use the No Contact Calculator</a>
-            <a class="secondary-btn" href="./should-i-text-my-ex/" data-event="home_should_i_text_cta">Should I Text My Ex?</a>
-          </div>
-          <div class="hero-proof" aria-label="Why people use this tracker">
-            <div>
-              <strong>Private by default</strong>
-              <span>No account or app download</span>
-            </div>
-            <div>
-              <strong>Built for the urge</strong>
-              <span>Use it before opening the chat</span>
-            </div>
-            <div>
-              <strong>Progress you can see</strong>
-              <span>Streaks, milestones, and resets</span>
-            </div>
-          </div>
-          <div class="keyword-row" aria-label="Popular tools">
-            <span>No contact tracker</span>
-            <span>No contact calculator</span>
-            <span>No contact counter</span>
-            <span>No contact after breakup</span>
-            <span>Breakup days calculator</span>
-            <span>Unsent letter to ex</span>
-            <span>No app download</span>
-            <span>No signup</span>
+          <div class="privacy-points" aria-label="Tracker benefits">
+            <span>Private on this device</span>
+            <span>Daily check-ins</span>
+            <span>Visible milestones</span>
           </div>
         </div>
 
         <form class="setup-form" id="setupForm" aria-label="Create your breakup recovery tracker" novalidate>
           <div class="form-card-header">
-            <p class="eyebrow">Private streak setup</p>
-            <h2>Your no-contact checkpoint</h2>
-            <span>Save the date, then use the number when the urge gets loud.</span>
-          </div>
-          <label>
-            <span>Their name or nickname</span>
-            <input name="personName" type="text" maxlength="24" placeholder="e.g. A, my ex, someone" required />
-          </label>
-          <div class="two-col">
-            <label>
-              <span>Relationship start date</span>
-              <input name="startDate" type="text" inputmode="numeric" pattern="(\d{4}-\d{2}-\d{2}|\d{8})" placeholder="YYYY-MM-DD or YYYYMMDD" />
-            </label>
-            <label>
-              <span>Breakup date</span>
-              <input name="breakupDate" type="text" inputmode="numeric" pattern="(\d{4}-\d{2}-\d{2}|\d{8})" placeholder="YYYY-MM-DD or YYYYMMDD" required />
-            </label>
+            <p class="eyebrow">Your first checkpoint</p>
+            <h2>When was your last contact?</h2>
+            <span>This is the only detail needed to start your counter.</span>
           </div>
           <label>
             <span>Last contact date</span>
-            <input name="lastContactDate" type="text" inputmode="numeric" pattern="(\d{4}-\d{2}-\d{2}|\d{8})" placeholder="YYYY-MM-DD or YYYYMMDD" />
+            <input name="lastContactDate" type="date" required />
           </label>
-          <label>
-            <span>Recovery reminder</span>
-            <textarea name="vow" maxlength="120" placeholder="I am choosing space, clarity, and myself today."></textarea>
-          </label>
+          <details class="optional-setup">
+            <summary>Add optional details</summary>
+            <div class="optional-setup-fields">
+              <label>
+                <span>Their name or nickname</span>
+                <input name="personName" type="text" maxlength="24" placeholder="e.g. A, my ex, someone" />
+              </label>
+              <div class="two-col">
+                <label>
+                  <span>Relationship start date</span>
+                  <input name="startDate" type="date" />
+                </label>
+                <label>
+                  <span>Breakup date</span>
+                  <input name="breakupDate" type="date" />
+                </label>
+              </div>
+              <label>
+                <span>Recovery reminder</span>
+                <textarea name="vow" maxlength="120" placeholder="I am choosing space, clarity, and myself today."></textarea>
+              </label>
+            </div>
+          </details>
           <p class="form-error" id="setupError" role="alert"></p>
-          <button class="primary-btn" type="submit">Start My No Contact Tracker</button>
+          <button class="primary-btn setup-submit" type="submit">Start My Counter</button>
+          <p class="form-privacy">Stored only in this browser. You can clear it at any time.</p>
         </form>
-      </section>
-
-      <div class="section-heading">
-        <p class="eyebrow">Start with the right tool</p>
-        <h2>Three calm ways to protect the boundary</h2>
-      </div>
-      <section class="conversion-grid" aria-label="Start with a no contact tool">
-        <a class="conversion-card" href="./no-contact-tracker/" data-event="home_path_tracker">
-          <span>01</span>
-          <strong>Track no contact days</strong>
-          <p>Start a private streak with daily check-ins, recovery notes, and visible milestones.</p>
-        </a>
-        <a class="conversion-card featured-tool-card" href="./no-contact-calculator/" data-event="home_path_calculator">
-          <span>02</span>
-          <strong>No contact calculator and counter</strong>
-          <p>Enter your last contact date, see your exact streak, and use the result as the main checkpoint before you text.</p>
-        </a>
-        <a class="conversion-card" href="./want-to-text-your-ex/" data-event="home_path_pause">
-          <span>03</span>
-          <strong>Pause before texting</strong>
-          <p>Use a 60-second reset before sending a message you may not actually want to send.</p>
-        </a>
-        <a class="conversion-card" href="./why-do-i-want-to-text-my-ex/">
-          <span>04</span>
-          <strong>Understand the urge</strong>
-          <p>Learn why you want to text your ex and what to do before sending anything.</p>
-        </a>
-        <a class="conversion-card" href="./no-contact-rule-after-breakup/">
-          <span>05</span>
-          <strong>No contact rule after breakup</strong>
-          <p>Set the start date, contact boundaries, necessary exceptions, and first review window after a breakup.</p>
-        </a>
       </section>
 
       <section class="dashboard hidden" id="dashboard">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Private tracker</p>
-            <h1>Day <span id="daysApart"></span> since the breakup with <span id="displayName"></span></h1>
+            <p class="eyebrow">Your private counter</p>
+            <h1>No Contact Day <span id="noContactHeadline"></span></h1>
+            <p class="dashboard-subtitle">A boundary protected since <span id="lastContactDisplay"></span><span id="personContext"></span>.</p>
           </div>
           <button class="ghost-btn" id="resetBtn" type="button">Start over</button>
         </header>
 
+        <nav class="quick-actions" aria-label="Today's no contact actions">
+          <button class="primary-btn" id="checkinShortcut" type="button">Check In Today</button>
+          <a class="urge-action" href="./want-to-text-your-ex/" data-event="home_dashboard_texting_urge">I Want to Text My Ex</a>
+          <button class="secondary-btn" id="progressShortcut" type="button">View Progress</button>
+        </nav>
+
         <section class="hero-grid" id="tracker">
           <article class="day-card">
             <div class="ambient-lines" aria-hidden="true"></div>
-            <p class="small-label">Today is</p>
-            <strong>Day <span id="heroDaysApart"></span></strong>
+            <p class="small-label">Your no contact streak</p>
+            <strong>Day <span id="heroNoContactDays"></span></strong>
             <p id="heroMessage">You do not have to feel healed today. You only have to stay close to yourself.</p>
+            <span class="next-milestone" id="nextMilestone"></span>
           </article>
           <div class="stats-grid">
             <article>
-              <span>No contact</span>
-              <strong><span id="noContactDays"></span> days</strong>
+              <span>Days since breakup</span>
+              <strong><span id="daysApart"></span></strong>
             </article>
             <article>
               <span>Together for</span>
@@ -305,6 +261,28 @@
             </div>
           </article>
         </section>
+      </section>
+
+      <div class="section-heading tool-path-heading">
+        <p class="eyebrow">More support when you need it</p>
+        <h2>Choose the next useful step</h2>
+      </div>
+      <section class="conversion-grid" aria-label="Start with a no contact tool">
+        <a class="conversion-card featured-tool-card" href="./no-contact-calculator/" data-event="home_path_calculator">
+          <span>01</span>
+          <strong>Calculate your exact streak</strong>
+          <p>Check your no-contact day count and the next milestone without starting a full tracker.</p>
+        </a>
+        <a class="conversion-card" href="./want-to-text-your-ex/" data-event="home_path_pause">
+          <span>02</span>
+          <strong>Pause before texting</strong>
+          <p>Use a 60-second reset before sending a message you may regret.</p>
+        </a>
+        <a class="conversion-card" href="./no-contact-rule-after-breakup/">
+          <span>03</span>
+          <strong>Set a clear boundary</strong>
+          <p>Decide what counts as contact, necessary exceptions, and when to review the rule.</p>
+        </a>
       </section>
 
       <section class="sos-panel" id="sos" aria-label="Immediate no contact help">

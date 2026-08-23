@@ -70,25 +70,34 @@ function render() {
   if (!state.profile) {
     $("#setupPanel").classList.remove("hidden");
     $("#dashboard").classList.add("hidden");
+    document.body.classList.remove("has-tracker");
     return;
   }
 
   $("#setupPanel").classList.add("hidden");
   $("#dashboard").classList.remove("hidden");
+  document.body.classList.add("has-tracker");
 
   const { personName, breakupDate, startDate, lastContactDate } = state.profile;
-  const apartDays = daysBetween(breakupDate);
-  const noContactDays = daysBetween(lastContactDate || breakupDate);
+  const counterStartDate = lastContactDate || breakupDate;
+  const apartDays = breakupDate ? daysBetween(breakupDate) : 0;
+  const noContactDays = daysBetween(counterStartDate);
   const togetherDays = startDate ? daysBetween(startDate, breakupDate) : 0;
+  const milestoneDays = [7, 14, 30, 60, 90, 100, 180, 365];
+  const upcomingMilestone = milestoneDays.find((day) => day > noContactDays);
 
-  $("#displayName").textContent = personName;
+  $("#noContactHeadline").textContent = noContactDays;
+  $("#heroNoContactDays").textContent = noContactDays;
+  $("#lastContactDisplay").textContent = formatDate(counterStartDate);
+  $("#personContext").textContent = personName ? ` with ${personName}` : "";
   $("#daysApart").textContent = apartDays;
-  $("#heroDaysApart").textContent = apartDays;
-  $("#noContactDays").textContent = noContactDays;
   $("#togetherDays").textContent = togetherDays ? `${togetherDays} days` : "Not set";
   $("#checkinCount").textContent = state.checkins.length;
   $("#vaultCount").textContent = state.vault.length;
   $("#heroMessage").textContent = state.profile.vow || "You do not have to feel healed today. You only have to stay close to yourself.";
+  $("#nextMilestone").textContent = upcomingMilestone
+    ? `${upcomingMilestone - noContactDays} ${upcomingMilestone - noContactDays === 1 ? "day" : "days"} to your Day ${upcomingMilestone} milestone`
+    : "Keep protecting the progress you have made.";
 
   renderLetters();
   renderVault();
@@ -272,12 +281,8 @@ $("#setupForm").addEventListener("submit", (event) => {
   const lastContactDate = normalizeDateInput(form.get("lastContactDate"));
 
   setupError.textContent = "";
-  if (!personName) {
-    setupError.textContent = "Please enter a name or nickname.";
-    return;
-  }
-  if (!breakupDate) {
-    setupError.textContent = "Please enter your breakup date.";
+  if (!lastContactDate) {
+    setupError.textContent = "Please choose the date of your last contact.";
     return;
   }
   if (![startDate, breakupDate, lastContactDate].every(isValidISODate)) {
@@ -288,13 +293,14 @@ $("#setupForm").addEventListener("submit", (event) => {
   state.profile = {
     personName,
     startDate,
-    breakupDate,
+    breakupDate: breakupDate || lastContactDate,
     lastContactDate,
     vow: form.get("vow").trim()
   };
   saveState();
   window.trackEvent?.("tracker_created");
   render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 $("#checkinForm").addEventListener("submit", (event) => {
@@ -371,6 +377,16 @@ $$(".tab").forEach((button) => {
   });
 });
 
+function openTrackerTab(tabName) {
+  const button = $(`.tab[data-tab="${tabName}"]`);
+  if (!button) return;
+  button.click();
+  $(".tabs").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+$("#checkinShortcut").addEventListener("click", () => openTrackerTab("today"));
+$("#progressShortcut").addEventListener("click", () => openTrackerTab("timeline"));
+
 $("#shareText").addEventListener("input", drawShareCard);
 $("#shareText").addEventListener("input", () => {
   shareTextDirty = true;
@@ -403,13 +419,13 @@ $("#resetBtn").addEventListener("click", () => {
   if (!confirmed) return;
   state = { ...defaultState };
   saveState();
-render();
+  render();
+});
 
 const prefilledLastContactDate = normalizeDateInput(new URLSearchParams(location.search).get("lastContactDate") || "");
 if (!state.profile && isValidISODate(prefilledLastContactDate) && prefilledLastContactDate) {
   $("#setupForm [name=lastContactDate]").value = prefilledLastContactDate;
   window.trackEvent?.("tracker_setup_date_prefilled");
 }
-});
 
 render();
