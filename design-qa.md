@@ -1,4 +1,4 @@
-# Design QA: Moonlit Mist Homepage
+# Design QA: Moonlit Mist Site
 
 ## Evidence
 
@@ -58,5 +58,24 @@ No actionable P0, P1, or P2 differences remain.
 - Desktop and mobile have no horizontal overflow.
 - Browser console errors: none.
 - Failed asset requests: none.
+
+## Site-Wide Extension
+
+- Shared visual layer: all non-home pages now use the same moonlit lake background, dark glass header, moon brand asset, translucent hero surfaces, and restrained glow as the homepage.
+- Reading surfaces: long articles retain light fog panels and dark text so the dreamlike direction does not reduce legibility.
+- Tool surfaces: calculators and decision tools use darker glass panels with high-contrast labels, inputs, results, and actions.
+- Representative desktop and mobile routes checked: `/no-contact-rule-after-breakup/`, `/no-contact-calculator/`, `/tools/`, and `/what-to-text-an-ex/`.
+- Final calculator screenshots: `/tmp/dream-calculator-desktop-final.png` at 1440 x 1024 and `/tmp/dream-calculator-mobile-final.png` at 390 x 844.
+- Calculator interaction: entering `2026-08-01` and selecting Calculate My Streak displayed the result successfully.
+- Responsive check: no horizontal overflow on any representative route.
+- Browser page errors: none.
+- A transient local-server 404 console message was not reproducible; a route-by-route response check returned no failed resources.
+
+### Site-Wide Comparison History
+
+- [P2] Calculator heading and helper copy inherited dark article text on the dark glass tool panel.
+- Fix: added calculator-specific high-contrast text and result styles.
+- [P2] Long mobile article titles occupied too much of the first viewport.
+- Fix: reduced the mobile article title scale while preserving the display hierarchy.
 
 final result: passed
