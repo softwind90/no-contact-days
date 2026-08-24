@@ -1582,6 +1582,25 @@ select:focus {
   justify-content: center;
 }
 
+.share-action {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+  margin-top: 14px;
+}
+
+.share-action .secondary-btn {
+  min-height: 48px;
+}
+
+.share-action .mini-result {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  margin: 0;
+}
+
 .site-footer {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
@@ -2592,6 +2611,14 @@ body:not(.home-page) .footer-links a {
   body:not(.home-page) .article-hero h1 {
     font-size: clamp(2.15rem, 10.5vw, 3rem);
     line-height: 1;
+  }
+
+  .share-action {
+    grid-template-columns: 1fr;
+  }
+
+  .share-action .secondary-btn {
+    width: 100%;
   }
 
   body:not(.home-page) .article-body,

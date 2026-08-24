@@ -77,5 +77,7 @@ No actionable P0, P1, or P2 differences remain.
 - Fix: added calculator-specific high-contrast text and result styles.
 - [P2] Long mobile article titles occupied too much of the first viewport.
 - Fix: reduced the mobile article title scale while preserving the display hierarchy.
+- [P2] The calculator share button wrapped away from the primary actions and sat flush against its full-width status message.
+- Fix: grouped the share control and status into a dedicated responsive row with a 12 px gap; desktop uses aligned columns and mobile stacks them without overflow.
 
 final result: passed
