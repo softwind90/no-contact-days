@@ -114,13 +114,15 @@
       <section class="article-hero">
         <p class="eyebrow">No contact tracker</p>
         <h1>Free no contact tracker: count days and keep your streak.</h1>
-        <p>Track your no contact days, urges, and milestones in one private browser tool. Count the days since your last contact, log the moment you want to text, and keep the next calm choice visible.</p>
+        <p>Start with your last contact date, see your current streak, and carry that date into a private browser tracker for urges, check-ins, and milestones. No signup or app download required.</p>
         <div class="page-cta">
-          <a class="primary-btn" href="../#top" data-event="tracker_page_start_top">Start the free tracker</a>
+          <a class="primary-btn" href="#tracker-start" data-event="tracker_page_start_top">Start tracking now</a>
           <a class="secondary-btn" href="../no-contact-calculator/">Calculate days first</a>
-          <button class="secondary-btn" type="button" data-share-tool="tracker" data-share-url="https://www.thenocontacttracker.com/no-contact-tracker/" data-share-title="Free no contact tracker">Share free tracker</button>
         </div>
-        <div class="mini-result" data-share-status>Share this private, free tracker with someone who needs a pause before texting.</div>
+        <div class="share-action">
+          <button class="secondary-btn" type="button" data-share-tool="tracker" data-share-url="https://www.thenocontacttracker.com/no-contact-tracker/" data-share-title="Free no contact tracker">Share free tracker</button>
+          <div class="mini-result" data-share-status>Share this private, free tracker with someone who needs a pause before texting.</div>
+        </div>
         <div class="trust-strip" aria-label="Tracker benefits">
           <span>Streak tracker</span>
           <span>Local device storage</span>
@@ -128,7 +130,7 @@
           <span>Milestone cards</span>
         </div>
         <div class="article-meta">
-          <span>Updated August 9, 2026</span>
+          <span>Updated August 25, 2026</span>
           <span>Self-help tracking tool</span>
           <a href="../editorial-policy/">Editorial standards</a>
         </div>
@@ -136,9 +138,9 @@
 
       <section class="content-grid">
         <article class="article-body">
-          <h2>Why tracking helps</h2>
-          <p>A breakup can make time feel blurry. A no contact tracker turns the boundary into something visible: one day, seven days, thirty days, and then longer stretches where you can finally see that the wave passes.</p>
-          <p>If you searched "no contact tracker," this is the main tool page. Use it when you want more than a day count: a streak, a place to log urges, and a calmer step before texting your ex.</p>
+          <h2>What this free no contact tracker does</h2>
+          <p>A breakup can make time feel blurry. This tracker starts with one concrete date, turns it into a visible streak, and gives each urge or milestone somewhere to go before you reopen the conversation.</p>
+          <p>Use this dedicated tracker page when you want more than today's number: check your current streak, move the date into the full browser tracker, and return for check-ins, unsent notes, reset points, and milestones.</p>
           <div class="comparison-list">
             <article>
               <strong>No contact counter</strong>
@@ -229,16 +231,17 @@
           </div>
         </article>
 
-        <aside class="mini-tool" aria-label="No contact quick calculator">
-          <p class="eyebrow">Quick streak check</p>
-          <h2>How many days no contact?</h2>
+        <aside class="mini-tool tracker-start" id="tracker-start" aria-label="Start the free no contact tracker">
+          <p class="eyebrow">Start here</p>
+          <h2>Start your free no contact tracker</h2>
+          <p>Enter the last day you texted, called, replied, or had a direct conversation.</p>
           <label>
             <span>Last contact date</span>
             <input id="lastContactDate" type="text" inputmode="numeric" placeholder="YYYY-MM-DD or YYYYMMDD" />
           </label>
-          <button class="primary-btn" id="streakButton" type="button">Calculate Streak</button>
-          <div class="mini-result" id="streakResult">Enter a date to calculate your streak.</div>
-          <a class="secondary-btn hidden" id="startWithDate" href="../#top" data-event="tracker_page_start_with_date">Use this date in the tracker</a>
+          <button class="primary-btn" id="streakButton" type="button">Check My Streak</button>
+          <div class="mini-result" id="streakResult">Your date stays in this browser.</div>
+          <a class="secondary-btn hidden" id="startWithDate" href="../#top" data-event="tracker_page_start_with_date">Continue to My Tracker</a>
         </aside>
       </section>
     </main>

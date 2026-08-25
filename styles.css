@@ -1675,6 +1675,10 @@ select:focus {
     grid-template-columns: 1fr;
   }
 
+  .tracker-start {
+    order: -1;
+  }
+
   .steps-grid,
   .topic-hub-grid {
     grid-template-columns: 1fr;
@@ -2582,6 +2586,10 @@ body:not(.home-page) .footer-links a {
     display: flex;
     align-items: center;
     background: rgba(7, 26, 39, 0.78);
+  }
+
+  body:not(.home-page) .brand-row > span:last-child {
+    display: none;
   }
 
   body:not(.home-page) .site-nav {
