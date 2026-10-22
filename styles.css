@@ -2294,6 +2294,38 @@ body.home-page::before {
   }
 }
 
+.analytics-choice {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
+  max-width: 680px;
+  margin: auto;
+  padding: 18px;
+  border: 1px solid #ccc5bb;
+  border-radius: 14px;
+  background: #fffdf8;
+  color: #272721;
+  box-shadow: 0 8px 32px #0002;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.analytics-choice[hidden] { display: none; }
+.analytics-choice p { margin: 0 0 12px; line-height: 1.5; font-size: 14px; }
+.analytics-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.analytics-actions button, .analytics-preferences {
+  padding: 10px 14px;
+  border: 1px solid #77766c;
+  border-radius: 8px;
+  background: #fffdf8;
+  color: #272721;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+}
+.analytics-preferences { margin-top: 16px; }
+
 @media (prefers-reduced-motion: reduce) {
   .home-page .dream-echoes span,
   .home-page .setup-form {
