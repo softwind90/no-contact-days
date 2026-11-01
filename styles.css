@@ -2312,6 +2312,12 @@ body.home-page::before {
   overflow-y: auto;
 }
 .analytics-choice[hidden] { display: none; }
+
+@media (max-width: 860px) {
+  .urge-page .content-grid > .mini-tool { order: -1; }
+  body.urge-page .article-hero { padding: 24px; }
+  body.urge-page .article-hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+}
 .analytics-choice p { margin: 0 0 12px; line-height: 1.5; font-size: 14px; }
 .analytics-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .analytics-actions button, .analytics-preferences {
