@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "no-contact-days.vercel.app"
+        }
+      ],
+      "destination": "https://www.thenocontacttracker.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -12,7 +23,23 @@
       "permanent": true
     },
     {
+      "source": "/:rest(.*)/",
+      "has": [
+        {
+          "type": "host",
+          "value": "no-contact-days.vercel.app"
+        }
+      ],
+      "destination": "https://www.thenocontacttracker.com/:rest/",
+      "permanent": true
+    },
+    {
       "source": "/no-contact-rule/:path*",
+      "destination": "/no-contact-rule-after-breakup/",
+      "permanent": true
+    },
+    {
+      "source": "/no-contact-rule/:path*/",
       "destination": "/no-contact-rule-after-breakup/",
       "permanent": true
     },
@@ -22,7 +49,17 @@
       "permanent": true
     },
     {
+      "source": "/no-contact-after-breakup/:path*/",
+      "destination": "/no-contact-rule-after-breakup/",
+      "permanent": true
+    },
+    {
       "source": "/i-want-to-text-my-ex/:path*",
+      "destination": "/want-to-text-your-ex/",
+      "permanent": true
+    },
+    {
+      "source": "/i-want-to-text-my-ex/:path*/",
       "destination": "/want-to-text-your-ex/",
       "permanent": true
     },
@@ -32,12 +69,27 @@
       "permanent": true
     },
     {
+      "source": "/why-do-want-to-text-your-ex/:path*/",
+      "destination": "/why-do-i-want-to-text-my-ex/",
+      "permanent": true
+    },
+    {
       "source": "/texts-to-send-your-ex/:path*",
       "destination": "/what-to-text-an-ex/",
       "permanent": true
     },
     {
+      "source": "/texts-to-send-your-ex/:path*/",
+      "destination": "/what-to-text-an-ex/",
+      "permanent": true
+    },
+    {
       "source": "/how-long-should-no-contact-last/:path*",
+      "destination": "/how-long-should-i-do-no-contact/",
+      "permanent": true
+    },
+    {
+      "source": "/how-long-should-no-contact-last/:path*/",
       "destination": "/how-long-should-i-do-no-contact/",
       "permanent": true
     }
