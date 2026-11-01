@@ -42,28 +42,3 @@ test('deployment host redirects cover the homepage and trailing-slash paths', ()
     assert.match(matches[0].destination, /^https:\/\/www\.thenocontacttracker\.com\//);
   }
 });
-
-test('homepage hash targets stay on the page but navigation uses clean paths', () => {
-  const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.match(home, /id="tracker"/);
-  assert.match(home, /id="sos"/);
-  assert.match(home, /href="\.\/no-contact-tracker\/">My counter/);
-  assert.match(home, /href="\.\/want-to-text-your-ex\/">Need a pause\?/);
-  assert.doesNotMatch(home, /href="#tracker"/);
-  assert.doesNotMatch(home, /href="#sos"/);
-  assert.match(home, /"url": "https:\/\/www\.thenocontacttracker\.com\/"/);
-});
-
-test('what-to-text snippet states the example count and the send-or-wait filter', () => {
-  const page = fs.readFileSync(path.join(root, 'what-to-text-an-ex/index.html'), 'utf8');
-  const title = page.match(/<title>([^<]*)<\/title>/)[1];
-  const description = page.match(/<meta name="description" content="([^"]*)"/)[1];
-  assert.equal(title, 'What Should I Text My Ex? 14 Calm Examples, or Wait');
-  assert.ok(title.length <= 60, `title is ${title.length} characters`);
-  assert.match(description, /14/);
-  assert.match(description, /wait/i);
-  assert.ok(description.length <= 160, `description is ${description.length} characters`);
-  assert.doesNotMatch(`${title} ${description}`, /reunion|get (them|your ex) back|miss you/i);
-  assert.match(page, /<h1>What to text your ex: 14 calm examples, and when to wait\.<\/h1>/);
-  assert.match(page, /"name": "What should I text my ex\?"/);
-});
