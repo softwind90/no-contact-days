@@ -92,6 +92,46 @@
       "source": "/how-long-should-no-contact-last/:path*/",
       "destination": "/how-long-should-i-do-no-contact/",
       "permanent": true
+    },
+    {
+      "source": "/what-to-text-your-ex/:path*",
+      "destination": "/what-to-text-an-ex/",
+      "permanent": true
+    },
+    {
+      "source": "/what-to-text-your-ex/:path*/",
+      "destination": "/what-to-text-an-ex/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-text-an-ex-without-looking-desperate/:path*",
+      "destination": "/how-to-text-your-ex-without-looking-desperate/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-text-an-ex-without-looking-desperate/:path*/",
+      "destination": "/how-to-text-your-ex-without-looking-desperate/",
+      "permanent": true
+    },
+    {
+      "source": "/last-text-to-your-ex/:path*",
+      "destination": "/last-text-before-no-contact/",
+      "permanent": true
+    },
+    {
+      "source": "/last-text-to-your-ex/:path*/",
+      "destination": "/last-text-before-no-contact/",
+      "permanent": true
+    },
+    {
+      "source": "/text-to-break-no-contact/:path*",
+      "destination": "/first-text-after-no-contact/",
+      "permanent": true
+    },
+    {
+      "source": "/text-to-break-no-contact/:path*/",
+      "destination": "/first-text-after-no-contact/",
+      "permanent": true
     }
   ],
   "headers": [

@@ -1534,6 +1534,62 @@ select:focus {
   margin-bottom: 0;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.compare-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0 8px;
+  border: 1px solid rgba(49, 89, 70, 0.1);
+  border-radius: 8px;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: var(--panel-soft);
+  font-size: 0.95rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(49, 89, 70, 0.08);
+}
+
+.compare-table th {
+  color: var(--sage-dark);
+  background: var(--mist);
+  font-weight: 800;
+}
+
+.compare-table tr:last-child th,
+.compare-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.compare-table td {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.compare-table a {
+  color: var(--sage-dark);
+  font-weight: 700;
+}
+
 .urge-box {
   display: grid;
   gap: 14px;
@@ -2510,6 +2566,7 @@ body:not(.home-page) .related-list a,
 body:not(.home-page) .message-checker,
 body:not(.home-page) .example-message,
 body:not(.home-page) .policy-list li,
+body:not(.home-page) .compare-table,
 body:not(.home-page) .comparison-list article,
 body:not(.home-page) .urge-box,
 body:not(.home-page) .faq-list details,
@@ -2541,6 +2598,23 @@ body:not(.home-page) .related-list a:hover {
 body:not(.home-page) .mini-result {
   color: #285d54;
   border-left-color: #6db3a8;
+}
+
+body:not(.home-page) .compare-table-wrap {
+  border-color: var(--content-line);
+}
+
+body:not(.home-page) .compare-table th {
+  color: var(--content-ink);
+  background: rgba(226, 240, 236, 0.92);
+}
+
+body:not(.home-page) .compare-table td {
+  color: var(--content-muted);
+}
+
+body:not(.home-page) .compare-table a {
+  color: #2d675e;
 }
 
 body:not(.home-page) .trust-strip span {
