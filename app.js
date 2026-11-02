@@ -257,7 +257,7 @@ function drawShareCard() {
 
   ctx.fillStyle = "#6b746f";
   ctx.font = "650 28px system-ui, sans-serif";
-  ctx.fillText("Private breakup recovery tracker", 174, 1126);
+  ctx.fillText("Private no contact tracker", 174, 1126);
   ctx.fillText(new Intl.DateTimeFormat("en-US").format(new Date()), 174, 1174);
 }
 
