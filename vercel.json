@@ -125,13 +125,33 @@
     },
     {
       "source": "/text-to-break-no-contact/:path*",
-      "destination": "/first-text-after-no-contact/",
+      "destination": "/texting-your-ex-after-no-contact/",
       "permanent": true
     },
     {
       "source": "/text-to-break-no-contact/:path*/",
-      "destination": "/first-text-after-no-contact/",
+      "destination": "/texting-your-ex-after-no-contact/",
       "permanent": true
+    },
+    {
+      "source": "/first-text-after-no-contact",
+      "destination": "/texting-your-ex-after-no-contact/",
+      "statusCode": 308
+    },
+    {
+      "source": "/first-text-after-no-contact/",
+      "destination": "/texting-your-ex-after-no-contact/",
+      "statusCode": 308
+    },
+    {
+      "source": "/first-text-after-no-contact/:path*",
+      "destination": "/texting-your-ex-after-no-contact/",
+      "statusCode": 308
+    },
+    {
+      "source": "/first-text-after-no-contact/:path*/",
+      "destination": "/texting-your-ex-after-no-contact/",
+      "statusCode": 308
     }
   ],
   "headers": [
